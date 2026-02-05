@@ -1,0 +1,1251 @@
+<!DOCTYPE html>
+<html lang="ru">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Регистрация | Программирование для дошкольников</title>
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
+    <style>
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+            font-family: 'Comic Sans MS', 'Chalkboard SE', 'Arial Rounded MT Bold', sans-serif;
+        }
+
+        body {
+            background: linear-gradient(135deg, #ff9a9e 0%, #fad0c4 100%);
+            min-height: 100vh;
+            display: flex;
+            flex-direction: column;
+            align-items: center;
+            padding: 20px;
+        }
+
+        .header {
+            text-align: center;
+            margin-bottom: 20px;
+            width: 100%;
+        }
+
+        .logo {
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            gap: 15px;
+            margin-bottom: 10px;
+        }
+
+        .logo-icon {
+            font-size: 2.5rem;
+            color: #ff6b6b;
+            animation: bounce 2s infinite;
+        }
+
+        .logo h1 {
+            color: #4a148c;
+            font-size: 2.8rem;
+            text-shadow: 3px 3px 0 #ffcc00;
+            letter-spacing: 1px;
+        }
+
+        .subtitle {
+            color: #5d4037;
+            font-size: 1.4rem;
+            margin-bottom: 20px;
+            text-align: center;
+            max-width: 600px;
+            margin: 0 auto 30px;
+        }
+
+        .container {
+            display: flex;
+            max-width: 1000px;
+            width: 100%;
+            background-color: rgba(255, 255, 255, 0.95);
+            border-radius: 25px;
+            overflow: hidden;
+            box-shadow: 0 15px 30px rgba(0, 0, 0, 0.2);
+            margin-bottom: 30px;
+        }
+
+        .illustration {
+            flex: 1;
+            background: linear-gradient(to bottom right, #6a11cb 0%, #2575fc 100%);
+            display: flex;
+            flex-direction: column;
+            justify-content: center;
+            align-items: center;
+            padding: 30px;
+            color: white;
+            position: relative;
+        }
+
+            .illustration h2 {
+                font-size: 2rem;
+                margin-bottom: 20px;
+                text-align: center;
+                text-shadow: 2px 2px 0 #4a148c;
+            }
+
+        .character {
+            font-size: 8rem;
+            margin: 20px 0;
+            animation: float 4s ease-in-out infinite;
+        }
+
+        .illustration p {
+            font-size: 1.2rem;
+            text-align: center;
+            line-height: 1.6;
+            max-width: 350px;
+        }
+
+        .registration-form {
+            flex: 1;
+            padding: 40px;
+            display: flex;
+            flex-direction: column;
+        }
+
+        .form-title {
+            color: #4a148c;
+            font-size: 2.2rem;
+            margin-bottom: 25px;
+            text-align: center;
+            position: relative;
+        }
+
+            .form-title:after {
+                content: '';
+                position: absolute;
+                bottom: -10px;
+                left: 50%;
+                transform: translateX(-50%);
+                width: 80px;
+                height: 5px;
+                background-color: #ffcc00;
+                border-radius: 5px;
+            }
+
+        .form-group {
+            margin-bottom: 20px;
+        }
+
+        label {
+            display: block;
+            margin-bottom: 8px;
+            color: #5d4037;
+            font-size: 1.1rem;
+            font-weight: bold;
+        }
+
+        input, select {
+            width: 100%;
+            padding: 15px;
+            border: 3px solid #ffcc00;
+            border-radius: 15px;
+            font-size: 1.1rem;
+            outline: none;
+            transition: all 0.3s;
+        }
+
+            input:focus, select:focus {
+                border-color: #ff6b6b;
+                box-shadow: 0 0 0 3px rgba(255, 107, 107, 0.3);
+            }
+
+        .password-strength {
+            margin-top: 5px;
+            font-size: 0.9rem;
+            display: none;
+        }
+
+            .password-strength.weak {
+                color: #ff6b6b;
+            }
+
+            .password-strength.medium {
+                color: #ffa726;
+            }
+
+            .password-strength.strong {
+                color: #4caf50;
+            }
+
+        .role-selection {
+            display: flex;
+            gap: 15px;
+            margin-bottom: 25px;
+            flex-wrap: wrap;
+        }
+
+        .role-option {
+            flex: 1;
+            min-width: 150px;
+            text-align: center;
+            padding: 20px 15px;
+            border: 3px solid #e0e0e0;
+            border-radius: 15px;
+            cursor: pointer;
+            transition: all 0.3s;
+            background-color: #f9f9f9;
+        }
+
+            .role-option:hover {
+                transform: translateY(-5px);
+                box-shadow: 0 10px 15px rgba(0, 0, 0, 0.1);
+            }
+
+            .role-option.selected {
+                border-color: #ff6b6b;
+                background-color: #fff9f9;
+                box-shadow: 0 5px 15px rgba(255, 107, 107, 0.2);
+            }
+
+        .role-icon {
+            font-size: 2.5rem;
+            margin-bottom: 10px;
+            color: #6a11cb;
+        }
+
+        .role-option.selected .role-icon {
+            color: #ff6b6b;
+        }
+
+        .role-name {
+            font-size: 1.3rem;
+            font-weight: bold;
+            color: #4a148c;
+            margin-bottom: 5px;
+        }
+
+        .role-desc {
+            font-size: 0.9rem;
+            color: #757575;
+        }
+
+        .role-option.admin {
+            border-color: #4a148c;
+        }
+
+            .role-option.admin.selected {
+                border-color: #ff6b6b;
+                background-color: #fff9f9;
+            }
+
+            .role-option.admin .role-icon {
+                color: #4a148c;
+            }
+
+            .role-option.admin.selected .role-icon {
+                color: #ff6b6b;
+            }
+
+        .admin-fields {
+            background-color: #f5f5f5;
+            padding: 15px;
+            border-radius: 15px;
+            margin-top: 15px;
+            border: 2px dashed #4a148c;
+            display: none;
+        }
+
+            .admin-fields.active {
+                display: block;
+                animation: fadeIn 0.5s ease;
+            }
+
+        .checkbox-group {
+            display: flex;
+            align-items: flex-start;
+            margin-bottom: 25px;
+        }
+
+            .checkbox-group input {
+                width: auto;
+                margin-right: 10px;
+                margin-top: 5px;
+            }
+
+            .checkbox-group label {
+                font-size: 0.95rem;
+                line-height: 1.5;
+            }
+
+        .terms-link {
+            color: #6a11cb;
+            text-decoration: none;
+            font-weight: bold;
+        }
+
+            .terms-link:hover {
+                text-decoration: underline;
+            }
+
+        .submit-btn {
+            background: linear-gradient(to right, #ff6b6b, #ff8e53);
+            color: white;
+            border: none;
+            padding: 18px;
+            border-radius: 15px;
+            font-size: 1.3rem;
+            font-weight: bold;
+            cursor: pointer;
+            transition: all 0.3s;
+            margin-top: 10px;
+            box-shadow: 0 5px 15px rgba(255, 107, 107, 0.4);
+        }
+
+            .submit-btn:hover {
+                transform: translateY(-3px);
+                box-shadow: 0 8px 20px rgba(255, 107, 107, 0.6);
+            }
+
+            .submit-btn:active {
+                transform: translateY(0);
+            }
+
+        .login-link {
+            text-align: center;
+            margin-top: 25px;
+            color: #5d4037;
+        }
+
+            .login-link a {
+                color: #6a11cb;
+                text-decoration: none;
+                font-weight: bold;
+            }
+
+                .login-link a:hover {
+                    text-decoration: underline;
+                }
+
+        .footer {
+            text-align: center;
+            color: #5d4037;
+            font-size: 0.9rem;
+            margin-top: 20px;
+            width: 100%;
+            padding: 15px;
+            border-top: 2px dashed #ffcc00;
+        }
+
+        @keyframes bounce {
+            0%, 100% {
+                transform: translateY(0);
+            }
+
+            50% {
+                transform: translateY(-10px);
+            }
+        }
+
+        @keyframes float {
+            0%, 100% {
+                transform: translateY(0);
+            }
+
+            50% {
+                transform: translateY(-20px);
+            }
+        }
+
+        @keyframes fadeIn {
+            from {
+                opacity: 0;
+                transform: translateY(-10px);
+            }
+
+            to {
+                opacity: 1;
+                transform: translateY(0);
+            }
+        }
+
+        @media (max-width: 900px) {
+            .container {
+                flex-direction: column;
+            }
+
+            .illustration {
+                padding: 30px 20px;
+            }
+
+            .character {
+                font-size: 6rem;
+            }
+
+            .role-selection {
+                flex-direction: column;
+            }
+
+            .role-option {
+                min-width: 100%;
+            }
+        }
+
+        @media (max-width: 600px) {
+            .logo h1 {
+                font-size: 2.2rem;
+            }
+
+            .subtitle {
+                font-size: 1.1rem;
+            }
+
+            .registration-form {
+                padding: 30px 20px;
+            }
+        }
+    </style>
+</head>
+<body>
+    <div class="header">
+        <div class="logo">
+            <i class="fas fa-laptop-code logo-icon"></i>
+            <h1>Программирование для дошкольников</h1>
+        </div>
+        <p class="subtitle">Присоединяйтесь к нашему веселому приключению в мир кода! Учим программированию через игры и сказки.</p>
+    </div>
+
+    <div class="container">
+        <div class="illustration">
+            <h2>Привет, друг!</h2>
+            <div class="character">🐱</div>
+            <p>Я Гномик-программист! Я помогу тебе научиться разговаривать с компьютером на его языке. Вместе мы будем создавать игры, рисовать картинки и решать интересные задачки!</p>
+            <div style="margin-top: 30px; display: flex; gap: 15px;">
+                <div style="background-color: rgba(255, 255, 255, 0.2); padding: 10px 15px; border-radius: 10px;">
+                    <i class="fas fa-gamepad"></i> Весёлые игры
+                </div>
+                <div style="background-color: rgba(255, 255, 255, 0.2); padding: 10px 15px; border-radius: 10px;">
+                    <i class="fas fa-paint-brush"></i> Красочные уроки
+                </div>
+            </div>
+        </div>
+
+        <div class="registration-form">
+            <h2 class="form-title">Регистрация</h2>
+
+            <form id="registrationForm">
+                <div class="form-group">
+                    <label for="fullName"><i class="fas fa-user"></i> Имя и фамилия:</label>
+                    <input type="text" id="fullName" name="fullName" placeholder="Например: Мария Иванова" required>
+                </div>
+
+                <div class="form-group">
+                    <label for="email"><i class="fas fa-envelope"></i> Электронная почта:</label>
+                    <input type="email" id="email" name="email" placeholder="ваша_почта@пример.com" required>
+                </div>
+
+                <div class="form-group">
+                    <label for="password"><i class="fas fa-lock"></i> Пароль:</label>
+                    <input type="password" id="password" name="password" placeholder="Придумайте надёжный пароль" required minlength="6">
+                    <div id="passwordStrength" class="password-strength"></div>
+                </div>
+
+                <div class="form-group">
+                    <label for="confirmPassword"><i class="fas fa-lock"></i> Подтвердите пароль:</label>
+                    <input type="password" id="confirmPassword" name="confirmPassword" placeholder="Повторите пароль" required>
+                </div>
+
+                <div class="form-group">
+                    <label>Кто вы?</label>
+                    <div class="role-selection">
+                        <div class="role-option" id="parentRole">
+                            <div class="role-icon"><i class="fas fa-user-friends"></i></div>
+                            <div class="role-name">Родитель</div>
+                            <div class="role-desc">Хочу помочь ребенку изучать программирование</div>
+                        </div>
+
+                        <div class="role-option" id="childRole">
+                            <div class="role-icon"><i class="fas fa-child"></i></div>
+                            <div class="role-name">Дошкольник</div>
+                            <div class="role-desc">Хочу учиться программировать с Гномиком</div>
+                        </div>
+
+                        <div class="role-option admin" id="adminRole">
+                            <div class="role-icon"><i class="fas fa-crown"></i></div>
+                            <div class="role-name">Администратор</div>
+                            <div class="role-desc">Управление контентом и пользователями</div>
+                        </div>
+                    </div>
+                    <input type="hidden" id="role" name="role" value="parent" required>
+                </div>
+
+                <div class="admin-fields" id="adminFields">
+                    <div class="form-group">
+                        <label for="adminCode"><i class="fas fa-key"></i> Код администратора:</label>
+                        <input type="password" id="adminCode" name="adminCode" placeholder="Введите секретный код">
+                    </div>
+
+                    <div class="form-group">
+                        <label for="adminPosition"><i class="fas fa-briefcase"></i> Должность:</label>
+                        <select id="adminPosition" name="adminPosition">
+                            <option value="">Выберите должность</option>
+                            <option value="content">Контент-менеджер</option>
+                            <option value="moderator">Модератор</option>
+                            <option value="superadmin">Супер-администратор</option>
+                        </select>
+                    </div>
+                </div>
+
+                <div class="form-group">
+                    <label for="childAge"><i class="fas fa-birthday-cake"></i> Возраст ребенка (если вы родитель):</label>
+                    <select id="childAge" name="childAge">
+                        <option value="">Выберите возраст</option>
+                        <option value="3-4">3-4 года</option>
+                        <option value="5-6">5-6 лет</option>
+                        <option value="7-8">7-8 лет</option>
+                    </select>
+                </div>
+
+                <div class="checkbox-group">
+                    <input type="checkbox" id="terms" name="terms" required>
+                    <label for="terms">Я соглашаюсь с <a href="#" class="terms-link">условиями использования</a> и даю согласие на обработку персональных данных</label>
+                </div>
+
+                <div class="checkbox-group">
+                    <input type="checkbox" id="newsletter" name="newsletter">
+                    <label for="newsletter">Хочу получать новости о новых уроках и играх</label>
+                </div>
+
+                <button type="submit" class="submit-btn">
+                    <i class="fas fa-rocket"></i> Начать приключение!
+                </button>
+            </form>
+
+            <div class="login-link">
+                Уже есть аккаунт? <a href="login.html">Войти</a>
+            </div>
+        </div>
+    </div>
+
+    <div class="footer">
+        <p>© 2023 Программирование для дошкольников. Все права защищены. | <a href="#" style="color: #6a11cb;">Политика конфиденциальности</a></p>
+        <p style="margin-top: 10px;">Сайт создан с ❤️ для маленьких программистов</p>
+    </div>
+
+    <script>
+        // ============================================
+        // НОВАЯ ПРОСТАЯ СИСТЕМА ХРАНЕНИЯ ДАННЫХ
+        // ============================================
+
+        // Ключ для хранения пользователей в localStorage
+        const USERS_STORAGE_KEY = 'preschool_users_data';
+
+        // Функция для получения всех пользователей
+        function getAllUsers() {
+            try {
+                const usersData = localStorage.getItem(USERS_STORAGE_KEY);
+                if (!usersData) {
+                    // Если данных нет, создаем пустой массив
+                    localStorage.setItem(USERS_STORAGE_KEY, JSON.stringify([]));
+                    return [];
+                }
+                return JSON.parse(usersData);
+            } catch (error) {
+                console.error('Ошибка при чтении пользователей:', error);
+                return [];
+            }
+        }
+
+        // Функция для сохранения пользователя
+        function saveNewUser(userData) {
+            try {
+                // Получаем текущих пользователей
+                const users = getAllUsers();
+
+                // Проверяем, нет ли уже пользователя с таким email
+                const existingUser = users.find(user => user.email === userData.email);
+                if (existingUser) {
+                    return {
+                        success: false,
+                        message: 'Пользователь с таким email уже существует!'
+                    };
+                }
+
+                // Добавляем ID и дату создания
+                userData.id = Date.now().toString();
+                userData.createdAt = new Date().toISOString();
+
+                // Добавляем нового пользователя
+                users.push(userData);
+
+                // Сохраняем обратно в localStorage
+                localStorage.setItem(USERS_STORAGE_KEY, JSON.stringify(users));
+
+                console.log('Пользователь сохранен:', userData);
+                console.log('Все пользователи:', users);
+
+                return {
+                    success: true,
+                    user: userData
+                };
+            } catch (error) {
+                console.error('Ошибка при сохранении пользователя:', error);
+                return {
+                    success: false,
+                    message: 'Ошибка при сохранении данных'
+                };
+            }
+        }
+
+        // Функция для проверки пользователя
+        function checkUserCredentials(email, password) {
+            const users = getAllUsers();
+            const user = users.find(user =>
+                user.email.toLowerCase() === email.toLowerCase() &&
+                user.password === password
+            );
+            return user || null;
+        }
+
+        // Функция для отладки - показывает всех пользователей
+        function debugShowUsers() {
+            const users = getAllUsers();
+            console.log('=== ОТЛАДКА: Все сохраненные пользователи ===');
+            if (users.length === 0) {
+                console.log('Нет сохраненных пользователей');
+            } else {
+                users.forEach((user, index) => {
+                    console.log(`${index + 1}. Имя: ${user.fullName}, Email: ${user.email}, Пароль: ${user.password}, Роль: ${user.role}`);
+                });
+            }
+            console.log('============================================');
+            return users;
+        }
+
+        // ============================================
+        // ИНИЦИАЛИЗАЦИЯ ТЕСТОВЫХ ДАННЫХ
+        // ============================================
+        function initializeTestData() {
+            const users = getAllUsers();
+
+            // Проверяем наличие тестовых пользователей
+            const testEmails = ['parent@example.com', 'child@example.com', 'admin@example.com'];
+            let hasTestUsers = false;
+
+            for (const email of testEmails) {
+                if (users.find(user => user.email === email)) {
+                    hasTestUsers = true;
+                    break;
+                }
+            }
+
+            // Если тестовых пользователей нет, добавляем их
+            if (!hasTestUsers && users.length === 0) {
+                const testUsers = [
+                    {
+                        id: '1',
+                        fullName: 'Тестовый Родитель',
+                        email: 'parent@example.com',
+                        password: '123456',
+                        role: 'parent',
+                        childAge: '5-6',
+                        newsletter: true,
+                        createdAt: new Date().toISOString()
+                    },
+                    {
+                        id: '2',
+                        fullName: 'Тестовый Дошкольник',
+                        email: 'child@example.com',
+                        password: '123456',
+                        role: 'child',
+                        childAge: '',
+                        newsletter: false,
+                        createdAt: new Date().toISOString()
+                    },
+                    {
+                        id: '3',
+                        fullName: 'Тестовый Администратор',
+                        email: 'admin@example.com',
+                        password: '123456',
+                        role: 'admin',
+                        adminCode: 'LLL',
+                        adminPosition: 'superadmin',
+                        newsletter: false,
+                        createdAt: new Date().toISOString()
+                    }
+                ];
+
+                testUsers.forEach(user => {
+                    const result = saveNewUser(user);
+                    if (result.success) {
+                        console.log(`Тестовый пользователь ${user.email} создан`);
+                    }
+                });
+            }
+
+            // Показываем отладочную информацию
+            debugShowUsers();
+        }
+
+        // Инициализируем тестовые данные при загрузке страницы
+        initializeTestData();
+
+        // ============================================
+        // ОСНОВНОЙ КОД СТРАНИЦЫ РЕГИСТРАЦИИ
+        // ============================================
+
+        // Элементы для управления ролями
+        const parentRole = document.getElementById('parentRole');
+        const childRole = document.getElementById('childRole');
+        const adminRole = document.getElementById('adminRole');
+        const roleInput = document.getElementById('role');
+        const childAgeSelect = document.getElementById('childAge');
+        const adminFields = document.getElementById('adminFields');
+        const adminCodeInput = document.getElementById('adminCode');
+        const adminPositionSelect = document.getElementById('adminPosition');
+        const passwordInput = document.getElementById('password');
+        const confirmPasswordInput = document.getElementById('confirmPassword');
+        const passwordStrength = document.getElementById('passwordStrength');
+
+        // Проверка сложности пароля
+        passwordInput.addEventListener('input', function () {
+            const password = this.value;
+            let strength = '';
+            let strengthClass = '';
+
+            if (password.length === 0) {
+                passwordStrength.style.display = 'none';
+                return;
+            }
+
+            passwordStrength.style.display = 'block';
+
+            if (password.length < 6) {
+                strength = 'Слишком короткий пароль';
+                strengthClass = 'weak';
+            } else if (password.length < 8) {
+                strength = 'Слабый пароль';
+                strengthClass = 'weak';
+            } else if (password.length < 10) {
+                strength = 'Средний пароль';
+                strengthClass = 'medium';
+            } else {
+                // Проверка на наличие разных символов
+                const hasUpper = /[A-Z]/.test(password);
+                const hasLower = /[a-z]/.test(password);
+                const hasNumbers = /\d/.test(password);
+                const hasSpecial = /[!@#$%^&*(),.?":{}|<>]/.test(password);
+
+                const complexity = [hasUpper, hasLower, hasNumbers, hasSpecial].filter(Boolean).length;
+
+                if (complexity >= 3) {
+                    strength = 'Сильный пароль';
+                    strengthClass = 'strong';
+                } else if (complexity >= 2) {
+                    strength = 'Средний пароль';
+                    strengthClass = 'medium';
+                } else {
+                    strength = 'Слабый пароль';
+                    strengthClass = 'weak';
+                }
+            }
+
+            passwordStrength.textContent = strength;
+            passwordStrength.className = `password-strength ${strengthClass}`;
+        });
+
+        // Функция сброса выбора роли
+        function resetRoleSelection() {
+            parentRole.classList.remove('selected');
+            childRole.classList.remove('selected');
+            adminRole.classList.remove('selected');
+            adminFields.classList.remove('active');
+            adminCodeInput.required = false;
+            adminPositionSelect.required = false;
+        }
+
+        // Обработчики для выбора роли
+        parentRole.addEventListener('click', () => {
+            resetRoleSelection();
+            parentRole.classList.add('selected');
+            roleInput.value = 'parent';
+            childAgeSelect.disabled = false;
+            childAgeSelect.required = true;
+        });
+
+        childRole.addEventListener('click', () => {
+            resetRoleSelection();
+            childRole.classList.add('selected');
+            roleInput.value = 'child';
+            childAgeSelect.disabled = true;
+            childAgeSelect.required = false;
+            childAgeSelect.value = '';
+        });
+
+        adminRole.addEventListener('click', () => {
+            resetRoleSelection();
+            adminRole.classList.add('selected');
+            roleInput.value = 'admin';
+            childAgeSelect.disabled = true;
+            childAgeSelect.required = false;
+            childAgeSelect.value = '';
+            adminFields.classList.add('active');
+            adminCodeInput.required = true;
+            adminPositionSelect.required = true;
+        });
+
+        // По умолчанию выбрана роль "Родитель"
+        parentRole.classList.add('selected');
+        childAgeSelect.required = true;
+
+        // Обработка отправки формы
+        document.getElementById('registrationForm').addEventListener('submit', function (e) {
+            e.preventDefault();
+
+            console.log('Начало регистрации...');
+
+            // Проверка паролей
+            const password = passwordInput.value;
+            const confirmPassword = confirmPasswordInput.value;
+
+            if (password !== confirmPassword) {
+                alert('Ошибка: Пароли не совпадают!');
+                confirmPasswordInput.focus();
+                return;
+            }
+
+            if (password.length < 6) {
+                alert('Ошибка: Пароль должен содержать минимум 6 символов!');
+                passwordInput.focus();
+                return;
+            }
+
+            // Собираем данные формы
+            const formData = {
+                fullName: document.getElementById('fullName').value.trim(),
+                email: document.getElementById('email').value.trim().toLowerCase(),
+                password: password,
+                role: roleInput.value,
+                childAge: document.getElementById('childAge').value,
+                newsletter: document.getElementById('newsletter').checked,
+                terms: document.getElementById('terms').checked
+            };
+
+            console.log('Данные для регистрации:', formData);
+
+            // Проверяем обязательное согласие с условиями
+            if (!formData.terms) {
+                alert('Вы должны согласиться с условиями использования!');
+                return;
+            }
+
+            // Добавляем данные администратора, если выбрана эта роль
+            if (formData.role === 'admin') {
+                formData.adminCode = adminCodeInput.value;
+                formData.adminPosition = adminPositionSelect.value;
+
+                // Проверка кода администратора
+                if (formData.adminCode !== 'LLL') {
+                    alert('Неверный код администратора! Для демонстрации используйте код: LLL');
+                    return;
+                }
+
+                if (!formData.adminPosition) {
+                    alert('Пожалуйста, выберите должность администратора!');
+                    return;
+                }
+            }
+
+            // Сохраняем пользователя
+            const result = saveNewUser(formData);
+
+            if (!result.success) {
+                alert(result.message);
+                return;
+            }
+
+            // Показываем сообщение об успешной регистрации
+            let roleMessage = '';
+            switch (formData.role) {
+                case 'parent':
+                    roleMessage = 'Вы зарегистрированы как родитель.';
+                    break;
+                case 'child':
+                    roleMessage = 'Вы зарегистрированы как дошкольник. Приятного обучения!';
+                    break;
+                case 'admin':
+                    roleMessage = `Вы зарегистрированы как администратор (${formData.adminPosition}). Панель управления доступна после входа.`;
+                    break;
+            }
+
+            // Сохраняем информацию о текущем пользователе в sessionStorage
+            sessionStorage.setItem('currentUser', JSON.stringify({
+                id: result.user.id,
+                fullName: result.user.fullName,
+                email: result.user.email,
+                role: result.user.role,
+                childAge: result.user.childAge
+            }));
+
+            console.log('Данные пользователя сохранены в sessionStorage');
+
+            alert(`✅ Ура! Регистрация прошла успешно!\n\nДобро пожаловать, ${formData.fullName}!\n${roleMessage}\n\nСейчас вы будете перенаправлены в личный кабинет...`);
+
+            // Перенаправление на страницу аккаунта через 2 секунды
+            setTimeout(() => {
+                window.location.href = 'account.html';
+            }, 2000);
+        });
+
+        // Меняем персонажа в зависимости от выбранной роли
+        const character = document.querySelector('.character');
+
+        parentRole.addEventListener('click', () => {
+            character.textContent = '👨‍👧';
+        });
+
+        childRole.addEventListener('click', () => {
+            character.textContent = '🐱';
+        });
+
+        adminRole.addEventListener('click', () => {
+            character.textContent = '👑';
+        });
+
+        // Отладочная информация при загрузке
+        console.log('Страница регистрации загружена');
+        debugShowUsers();
+        // При регистрации нового пользователя
+function registerUser(userData) {
+    const users = getUsers();
+
+
+    const newUser = {
+        id: Date.now().toString(),
+        fullName: userData.fullName,
+        email: userData.email,
+        password: userData.password, // В реальном приложении нужно хешировать пароль!
+        role: userData.role || 'parent',
+        status: 'active',
+        createdAt: new Date().toISOString(),
+        updatedAt: new Date().toISOString()
+    };
+
+    if (userData.childAge) {
+        newUser.childAge = parseInt(userData.childAge);
+    }
+
+    users.push(newUser);
+    localStorage.setItem(USERS_KEY, JSON.stringify(users));
+
+    return {
+        success: true,
+        message: 'Регистрация успешна!',
+        user: newUser
+    };
+}
+    // ============================================
+// СИНХРОНИЗИРОВАННАЯ СИСТЕМА ХРАНЕНИЯ ДАННЫХ
+// ============================================
+
+// Ключи для хранения (совместимые с админ-панелью)
+const USERS_KEY = 'preschool_programming_users';
+const CURRENT_USER_KEY = 'currentUser';
+
+// Функция для получения всех пользователей (совместимая)
+function getUsers() {
+    try {
+        const usersData = localStorage.getItem(USERS_KEY);
+        if (!usersData) {
+            // Если данных нет, создаем пустой массив
+            const initialUsers = [];
+            localStorage.setItem(USERS_KEY, JSON.stringify(initialUsers));
+            return initialUsers;
+        }
+        return JSON.parse(usersData);
+    } catch (error) {
+        console.error('Ошибка при чтении пользователей:', error);
+        return [];
+    }
+}
+
+// Функция для сохранения пользователя (совместимая с админкой)
+function saveUser(userData) {
+    try {
+        // Получаем текущих пользователей
+        const users = getUsers();
+
+        // Проверяем, нет ли уже пользователя с таким email
+        const existingUser = users.find(user => user.email === userData.email);
+        if (existingUser) {
+            return {
+                success: false,
+                message: 'Пользователь с таким email уже существует!'
+            };
+        }
+
+        // Форматируем данные в совместимом формате
+        const newUser = {
+            id: Date.now().toString(),
+            fullName: userData.fullName,
+            email: userData.email,
+            password: userData.password,
+            role: userData.role,
+            status: 'active',
+            createdAt: new Date().toISOString(),
+            updatedAt: new Date().toISOString()
+        };
+
+        // Добавляем дополнительные поля в зависимости от роли
+        if (userData.role === 'parent' && userData.childAge) {
+            newUser.childAge = userData.childAge;
+        } else if (userData.role === 'admin') {
+            newUser.adminCode = userData.adminCode;
+            newUser.adminPosition = userData.adminPosition;
+        }
+
+        // Добавляем подписку на рассылку
+        newUser.newsletter = userData.newsletter || false;
+
+        // Добавляем нового пользователя
+        users.push(newUser);
+
+        // Сохраняем обратно в localStorage
+        localStorage.setItem(USERS_KEY, JSON.stringify(users));
+
+        console.log('Пользователь сохранен в совместимом формате:', newUser);
+        console.log('Всего пользователей:', users.length);
+
+        return {
+            success: true,
+            user: newUser
+        };
+    } catch (error) {
+        console.error('Ошибка при сохранении пользователя:', error);
+        return {
+            success: false,
+            message: 'Ошибка при сохранении данных'
+        };
+    }
+}
+
+// Функция для проверки пользователя
+function checkUserCredentials(email, password) {
+    const users = getUsers();
+    const user = users.find(user =>
+        user.email.toLowerCase() === email.toLowerCase() &&
+        user.password === password
+    );
+    return user || null;
+}
+
+// Функция для отладки - показывает всех пользователей
+function debugShowUsers() {
+    const users = getUsers();
+    console.log('=== ВСЕ СОХРАНЕННЫЕ ПОЛЬЗОВАТЕЛИ ===');
+    console.log(`Количество пользователей: ${users.length}`);
+
+    if (users.length === 0) {
+        console.log('Нет сохраненных пользователей');
+    } else {
+        users.forEach((user, index) => {
+            console.log(`${index + 1}. ID: ${user.id}`);
+            console.log(`   Имя: ${user.fullName}`);
+            console.log(`   Email: ${user.email}`);
+            console.log(`   Роль: ${user.role}`);
+            console.log(`   Статус: ${user.status}`);
+            console.log(`   Дата: ${new Date(user.createdAt).toLocaleString('ru-RU')}`);
+            console.log('---');
+        });
+    }
+    console.log('====================================');
+    return users;
+}
+
+// Инициализация тестовых данных в совместимом формате
+function initializeTestData() {
+    const users = getUsers();
+
+    // Проверяем наличие тестовых пользователей
+    const testEmails = ['parent@example.com', 'child@example.com', 'admin@example.com'];
+    let hasTestUsers = false;
+
+    for (const email of testEmails) {
+        if (users.find(user => user.email === email)) {
+            hasTestUsers = true;
+            break;
+        }
+    }
+
+    // Если тестовых пользователей нет, добавляем их
+    if (!hasTestUsers && users.length === 0) {
+        console.log('Создаем тестовых пользователей...');
+
+        const testUsers = [
+            {
+                id: '1_' + Date.now(),
+                fullName: 'Тестовый Родитель',
+                email: 'parent@example.com',
+                password: '123456',
+                role: 'parent',
+                childAge: '5-6',
+                status: 'active',
+                newsletter: true,
+                createdAt: new Date().toISOString(),
+                updatedAt: new Date().toISOString()
+            },
+            {
+                id: '2_' + Date.now(),
+                fullName: 'Тестовый Дошкольник',
+                email: 'child@example.com',
+                password: '123456',
+                role: 'child',
+                status: 'active',
+                newsletter: false,
+                createdAt: new Date().toISOString(),
+                updatedAt: new Date().toISOString()
+            },
+            {
+                id: '3_' + Date.now(),
+                fullName: 'Тестовый Администратор',
+                email: 'admin@example.com',
+                password: '123456',
+                role: 'admin',
+                adminCode: 'LLL',
+                adminPosition: 'superadmin',
+                status: 'active',
+                newsletter: false,
+                createdAt: new Date().toISOString(),
+                updatedAt: new Date().toISOString()
+            }
+        ];
+
+        testUsers.forEach(user => {
+            const result = saveUser(user);
+            if (result.success) {
+                console.log(`Тестовый пользователь ${user.email} создан`);
+            }
+        });
+    }
+
+    // Показываем отладочную информацию
+    debugShowUsers();
+}
+
+// Обновляем обработчик отправки формы
+document.getElementById('registrationForm').addEventListener('submit', function (e) {
+    e.preventDefault();
+
+    console.log('Начало регистрации (совместимая версия)...');
+
+    // Проверка паролей
+    const password = passwordInput.value;
+    const confirmPassword = confirmPasswordInput.value;
+
+    if (password !== confirmPassword) {
+        alert('Ошибка: Пароли не совпадают!');
+        confirmPasswordInput.focus();
+        return;
+    }
+
+    if (password.length < 6) {
+        alert('Ошибка: Пароль должен содержать минимум 6 символов!');
+        passwordInput.focus();
+        return;
+    }
+
+    // Собираем данные формы
+    const formData = {
+        fullName: document.getElementById('fullName').value.trim(),
+        email: document.getElementById('email').value.trim().toLowerCase(),
+        password: password,
+        role: roleInput.value,
+        newsletter: document.getElementById('newsletter').checked,
+        terms: document.getElementById('terms').checked
+    };
+
+    // Добавляем дополнительные данные в зависимости от роли
+    if (formData.role === 'parent') {
+        formData.childAge = document.getElementById('childAge').value;
+        if (!formData.childAge) {
+            alert('Пожалуйста, выберите возраст ребенка!');
+            return;
+        }
+    } else if (formData.role === 'admin') {
+        formData.adminCode = adminCodeInput.value;
+        formData.adminPosition = adminPositionSelect.value;
+
+        // Проверка кода администратора
+        if (formData.adminCode !== 'LLL') {
+            alert('Неверный код администратора! Для демонстрации используйте код: LLL');
+            return;
+        }
+
+        if (!formData.adminPosition) {
+            alert('Пожалуйста, выберите должность администратора!');
+            return;
+        }
+    }
+
+    // Проверяем обязательное согласие с условиями
+    if (!formData.terms) {
+        alert('Вы должны согласиться с условиями использования!');
+        return;
+    }
+
+    console.log('Данные для регистрации:', formData);
+
+    // Сохраняем пользователя в совместимом формате
+    const result = saveUser(formData);
+
+    if (!result.success) {
+        alert(result.message);
+        return;
+    }
+
+    // Показываем сообщение об успешной регистрации
+    let roleMessage = '';
+    switch (formData.role) {
+        case 'parent':
+            roleMessage = 'Вы зарегистрированы как родитель.';
+            break;
+        case 'child':
+            roleMessage = 'Вы зарегистрированы как дошкольник. Приятного обучения!';
+            break;
+        case 'admin':
+            roleMessage = `Вы зарегистрированы как администратор (${formData.adminPosition}). Панель управления доступна после входа.`;
+            break;
+    }
+
+    // Сохраняем информацию о текущем пользователе в sessionStorage
+    sessionStorage.setItem(CURRENT_USER_KEY, JSON.stringify({
+        id: result.user.id,
+        fullName: result.user.fullName,
+        email: result.user.email,
+        role: result.user.role,
+        childAge: result.user.childAge || '',
+        adminPosition: result.user.adminPosition || ''
+    }));
+
+    // Также сохраняем в localStorage для совместимости
+    localStorage.setItem('currentUser', JSON.stringify({
+        id: result.user.id,
+        fullName: result.user.fullName,
+        email: result.user.email,
+        role: result.user.role
+    }));
+
+    console.log('Данные пользователя сохранены в sessionStorage и localStorage');
+
+    alert(`✅ Ура! Регистрация прошла успешно!\n\nДобро пожаловать, ${formData.fullName}!\n${roleMessage}\n\nСейчас вы будете перенаправлены в личный кабинет...`);
+
+    // Перенаправление на страницу аккаунта через 2 секунды
+    setTimeout(() => {
+        window.location.href = 'account.html';
+    }, 2000);
+});
+
+// Инициализируем тестовые данные при загрузке страницы
+document.addEventListener('DOMContentLoaded', function() {
+    console.log('Страница регистрации загружена');
+    initializeTestData();
+    debugShowUsers();
+});
+    </script>
+</body>
+</html>

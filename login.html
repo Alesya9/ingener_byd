@@ -1,0 +1,731 @@
+<!DOCTYPE html>
+<html lang="ru">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Вход | Программирование для дошкольников</title>
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
+    <style>
+        /* Все стили оставляем без изменений */
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+            font-family: 'Comic Sans MS', 'Chalkboard SE', 'Arial Rounded MT Bold', sans-serif;
+        }
+
+        body {
+            background: linear-gradient(135deg, #6a11cb 0%, #2575fc 100%);
+            min-height: 100vh;
+            display: flex;
+            flex-direction: column;
+            align-items: center;
+            justify-content: center;
+            padding: 20px;
+        }
+
+        .header {
+            text-align: center;
+            margin-bottom: 30px;
+            width: 100%;
+        }
+
+        .logo {
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            gap: 15px;
+            margin-bottom: 10px;
+        }
+
+        .logo-icon {
+            font-size: 2.5rem;
+            color: #ffcc00;
+            animation: bounce 2s infinite;
+        }
+
+        .logo h1 {
+            color: white;
+            font-size: 2.8rem;
+            text-shadow: 3px 3px 0 #4a148c;
+            letter-spacing: 1px;
+        }
+
+        .subtitle {
+            color: #ffcc00;
+            font-size: 1.4rem;
+            text-align: center;
+            max-width: 600px;
+            margin: 0 auto;
+        }
+
+        .container {
+            max-width: 500px;
+            width: 100%;
+            background-color: rgba(255, 255, 255, 0.95);
+            border-radius: 25px;
+            overflow: hidden;
+            box-shadow: 0 15px 30px rgba(0, 0, 0, 0.3);
+        }
+
+        .login-form {
+            padding: 40px;
+            display: flex;
+            flex-direction: column;
+        }
+
+        .form-title {
+            color: #4a148c;
+            font-size: 2.2rem;
+            margin-bottom: 25px;
+            text-align: center;
+            position: relative;
+        }
+
+            .form-title:after {
+                content: '';
+                position: absolute;
+                bottom: -10px;
+                left: 50%;
+                transform: translateX(-50%);
+                width: 80px;
+                height: 5px;
+                background-color: #ff6b6b;
+                border-radius: 5px;
+            }
+
+        .form-group {
+            margin-bottom: 20px;
+        }
+
+        label {
+            display: block;
+            margin-bottom: 8px;
+            color: #5d4037;
+            font-size: 1.1rem;
+            font-weight: bold;
+        }
+
+        .input-with-icon {
+            position: relative;
+        }
+
+        .input-icon {
+            position: absolute;
+            left: 15px;
+            top: 50%;
+            transform: translateY(-50%);
+            color: #6a11cb;
+            font-size: 1.2rem;
+        }
+
+        input {
+            width: 100%;
+            padding: 15px 15px 15px 50px;
+            border: 3px solid #ffcc00;
+            border-radius: 15px;
+            font-size: 1.1rem;
+            outline: none;
+            transition: all 0.3s;
+        }
+
+            input:focus {
+                border-color: #ff6b6b;
+                box-shadow: 0 0 0 3px rgba(255, 107, 107, 0.3);
+            }
+
+        .password-toggle {
+            position: absolute;
+            right: 15px;
+            top: 50%;
+            transform: translateY(-50%);
+            color: #757575;
+            cursor: pointer;
+            font-size: 1.2rem;
+        }
+
+            .password-toggle:hover {
+                color: #4a148c;
+            }
+
+        .remember-forgot {
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+            margin-bottom: 25px;
+        }
+
+        .remember-me {
+            display: flex;
+            align-items: center;
+        }
+
+            .remember-me input {
+                width: auto;
+                margin-right: 8px;
+            }
+
+            .remember-me label {
+                color: #5d4037;
+                font-size: 0.95rem;
+                margin-bottom: 0;
+            }
+
+        .forgot-password {
+            color: #6a11cb;
+            text-decoration: none;
+            font-size: 0.95rem;
+        }
+
+            .forgot-password:hover {
+                text-decoration: underline;
+            }
+
+        .submit-btn {
+            background: linear-gradient(to right, #ff6b6b, #ff8e53);
+            color: white;
+            border: none;
+            padding: 18px;
+            border-radius: 15px;
+            font-size: 1.3rem;
+            font-weight: bold;
+            cursor: pointer;
+            transition: all 0.3s;
+            margin-top: 10px;
+            box-shadow: 0 5px 15px rgba(255, 107, 107, 0.4);
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            gap: 10px;
+        }
+
+            .submit-btn:hover {
+                transform: translateY(-3px);
+                box-shadow: 0 8px 20px rgba(255, 107, 107, 0.6);
+            }
+
+            .submit-btn:active {
+                transform: translateY(0);
+            }
+
+        .login-with {
+            text-align: center;
+            margin: 25px 0;
+            color: #5d4037;
+            position: relative;
+        }
+
+            .login-with:before {
+                content: '';
+                position: absolute;
+                top: 50%;
+                left: 0;
+                right: 0;
+                height: 1px;
+                background-color: #e0e0e0;
+                z-index: 1;
+            }
+
+            .login-with span {
+                background-color: white;
+                padding: 0 15px;
+                position: relative;
+                z-index: 2;
+            }
+
+        .social-login {
+            display: flex;
+            gap: 15px;
+            margin-bottom: 25px;
+        }
+
+        .social-btn {
+            flex: 1;
+            padding: 15px;
+            border: 2px solid #e0e0e0;
+            border-radius: 15px;
+            background-color: white;
+            cursor: pointer;
+            transition: all 0.3s;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            gap: 10px;
+            font-weight: bold;
+        }
+
+            .social-btn:hover {
+                transform: translateY(-3px);
+                box-shadow: 0 5px 15px rgba(0, 0, 0, 0.1);
+            }
+
+            .social-btn.google {
+                color: #db4437;
+                border-color: #db4437;
+            }
+
+                .social-btn.google:hover {
+                    background-color: rgba(219, 68, 55, 0.1);
+                }
+
+            .social-btn.facebook {
+                color: #4267B2;
+                border-color: #4267B2;
+            }
+
+                .social-btn.facebook:hover {
+                    background-color: rgba(66, 103, 178, 0.1);
+                }
+
+        .register-link {
+            text-align: center;
+            margin-top: 25px;
+            color: #5d4037;
+        }
+
+            .register-link a {
+                color: #6a11cb;
+                text-decoration: none;
+                font-weight: bold;
+            }
+
+                .register-link a:hover {
+                    text-decoration: underline;
+                }
+
+        .demo-accounts {
+            background-color: #f5f5f5;
+            border-radius: 15px;
+            padding: 15px;
+            margin-top: 20px;
+            border: 2px dashed #ffcc00;
+        }
+
+            .demo-accounts h3 {
+                color: #4a148c;
+                margin-bottom: 10px;
+                font-size: 1.1rem;
+            }
+
+            .demo-accounts ul {
+                list-style: none;
+                padding-left: 0;
+            }
+
+            .demo-accounts li {
+                margin-bottom: 8px;
+                font-size: 0.9rem;
+                color: #5d4037;
+            }
+
+        .footer {
+            text-align: center;
+            color: white;
+            font-size: 0.9rem;
+            margin-top: 30px;
+            width: 100%;
+            padding: 15px;
+        }
+
+            .footer a {
+                color: #ffcc00;
+                text-decoration: none;
+            }
+
+                .footer a:hover {
+                    text-decoration: underline;
+                }
+
+        @keyframes bounce {
+            0%, 100% {
+                transform: translateY(0);
+            }
+
+            50% {
+                transform: translateY(-10px);
+            }
+        }
+
+        @media (max-width: 600px) {
+            .logo h1 {
+                font-size: 2.2rem;
+            }
+
+            .subtitle {
+                font-size: 1.1rem;
+            }
+
+            .login-form {
+                padding: 30px 20px;
+            }
+
+            .remember-forgot {
+                flex-direction: column;
+                align-items: flex-start;
+                gap: 15px;
+            }
+
+            .social-login {
+                flex-direction: column;
+            }
+        }
+    </style>
+</head>
+<body>
+    <div class="header">
+        <div class="logo">
+            <i class="fas fa-laptop-code logo-icon"></i>
+            <h1>Программирование для дошкольников</h1>
+        </div>
+        <p class="subtitle">Снова в пути? Войдите в свой аккаунт!</p>
+    </div>
+
+    <div class="container">
+        <div class="login-form">
+            <h2 class="form-title">Вход в аккаунт</h2>
+
+            <form id="loginForm">
+                <div class="form-group">
+                    <label for="email"><i class="fas fa-envelope"></i> Электронная почта:</label>
+                    <div class="input-with-icon">
+                        <i class="fas fa-envelope input-icon"></i>
+                        <input type="email" id="email" name="email" placeholder="ваша_почта@пример.com" required>
+                    </div>
+                </div>
+
+                <div class="form-group">
+                    <label for="password"><i class="fas fa-lock"></i> Пароль:</label>
+                    <div class="input-with-icon">
+                        <i class="fas fa-lock input-icon"></i>
+                        <input type="password" id="password" name="password" placeholder="Введите ваш пароль" required>
+                        <i class="fas fa-eye password-toggle" id="togglePassword"></i>
+                    </div>
+                </div>
+
+                <div class="remember-forgot">
+                    <div class="remember-me">
+                        <input type="checkbox" id="remember" name="remember">
+                        <label for="remember">Запомнить меня</label>
+                    </div>
+                    <a href="#" class="forgot-password">Забыли пароль?</a>
+                </div>
+
+                <button type="submit" class="submit-btn">
+                    <i class="fas fa-sign-in-alt"></i> Войти
+                </button>
+
+                <div class="demo-accounts">
+                    <h3>Для тестирования:</h3>
+                    <ul>
+                        <li><strong>Родитель:</strong> parent@example.com / пароль: 123456</li>
+                        <li><strong>Дошкольник:</strong> child@example.com / пароль: 123456</li>
+                        <li><strong>Администратор:</strong> admin@example.com / пароль: 123456</li>
+                    </ul>
+                    <div style="margin-top: 10px; font-size: 0.8rem; color: #666;">
+                        <button id="debugBtn" style="background: #6a11cb; color: white; border: none; padding: 5px 10px; border-radius: 5px; cursor: pointer; margin-right: 10px;">
+                            Показать сохраненных пользователей
+                        </button>
+                        <button id="clearBtn" style="background: #ff6b6b; color: white; border: none; padding: 5px 10px; border-radius: 5px; cursor: pointer;">
+                            Очистить все данные
+                        </button>
+                    </div>
+                </div>
+
+                <div class="login-with">
+                    <span>Или войдите с помощью</span>
+                </div>
+
+                <div class="social-login">
+                    <button type="button" class="social-btn google">
+                        <i class="fab fa-google"></i> Google
+                    </button>
+                    <button type="button" class="social-btn facebook">
+                        <i class="fab fa-facebook-f"></i> Facebook
+                    </button>
+                </div>
+
+                <div class="register-link">
+                    Нет аккаунта? <a href="register.html">Зарегистрироваться</a>
+                </div>
+            </form>
+        </div>
+    </div>
+
+    <div class="footer">
+        <p>© 2023 Программирование для дошкольников. Все права защищены. | <a href="#">Политика конфиденциальности</a></p>
+        <p style="margin-top: 10px;">Сайт создан с ❤️ для маленьких программистов</p>
+    </div>
+
+    <script>
+        // ============================================
+        // ТА ЖЕ СИСТЕМА ХРАНЕНИЯ, ЧТО И В REGISTER.HTML
+        // ============================================
+
+        // Ключ для хранения пользователей в localStorage
+        const USERS_STORAGE_KEY = 'preschool_users_data';
+
+        // Функция для получения всех пользователей
+        function getAllUsers() {
+            try {
+                const usersData = localStorage.getItem(USERS_STORAGE_KEY);
+                if (!usersData) {
+                    // Если данных нет, создаем пустой массив
+                    localStorage.setItem(USERS_STORAGE_KEY, JSON.stringify([]));
+                    return [];
+                }
+                return JSON.parse(usersData);
+            } catch (error) {
+                console.error('Ошибка при чтении пользователей:', error);
+                return [];
+            }
+        }
+
+        // Функция для проверки пользователя
+        function checkUserCredentials(email, password) {
+            const users = getAllUsers();
+            const user = users.find(user =>
+                user.email.toLowerCase() === email.toLowerCase() &&
+                user.password === password
+            );
+            return user || null;
+        }
+
+        // Функция для отладки - показывает всех пользователей
+        function debugShowUsers() {
+            const users = getAllUsers();
+            console.log('=== ОТЛАДКА: Все сохраненные пользователи ===');
+            console.log('Ключ в localStorage:', USERS_STORAGE_KEY);
+            if (users.length === 0) {
+                console.log('Нет сохраненных пользователей');
+                alert('В системе нет сохраненных пользователей');
+            } else {
+                users.forEach((user, index) => {
+                    console.log(`${index + 1}. Имя: ${user.fullName}, Email: ${user.email}, Пароль: ${user.password}, Роль: ${user.role}`);
+                });
+                alert(`Найдено ${users.length} пользователей. Смотрите консоль (F12) для подробностей.`);
+            }
+            console.log('============================================');
+            return users;
+        }
+
+        // Функция для очистки всех данных
+        function clearAllData() {
+            if (confirm('Вы уверены, что хотите удалить ВСЕ данные пользователей?')) {
+                localStorage.removeItem(USERS_STORAGE_KEY);
+                localStorage.removeItem('lastEmail');
+                localStorage.removeItem('rememberMe');
+                console.log('Все данные очищены');
+                alert('Все данные пользователей были удалены. Страница будет перезагружена.');
+                location.reload();
+            }
+        }
+
+        // Функция для инициализации тестовых данных
+        function initializeTestData() {
+            const users = getAllUsers();
+
+            // Проверяем наличие тестовых пользователей
+            const testEmails = ['parent@example.com', 'child@example.com', 'admin@example.com'];
+            let hasAllTestUsers = true;
+
+            for (const email of testEmails) {
+                if (!users.find(user => user.email === email)) {
+                    hasAllTestUsers = false;
+                    break;
+                }
+            }
+
+            // Если тестовых пользователей нет, добавляем их
+            if (!hasAllTestUsers) {
+                const testUsersToAdd = [];
+
+                if (!users.find(user => user.email === 'parent@example.com')) {
+                    testUsersToAdd.push({
+                        id: '1_' + Date.now(),
+                        fullName: 'Тестовый Родитель',
+                        email: 'parent@example.com',
+                        password: '123456',
+                        role: 'parent',
+                        childAge: '5-6',
+                        newsletter: true,
+                        createdAt: new Date().toISOString()
+                    });
+                }
+
+                if (!users.find(user => user.email === 'child@example.com')) {
+                    testUsersToAdd.push({
+                        id: '2_' + Date.now(),
+                        fullName: 'Тестовый Дошкольник',
+                        email: 'child@example.com',
+                        password: '123456',
+                        role: 'child',
+                        childAge: '',
+                        newsletter: false,
+                        createdAt: new Date().toISOString()
+                    });
+                }
+
+                if (!users.find(user => user.email === 'admin@example.com')) {
+                    testUsersToAdd.push({
+                        id: '3_' + Date.now(),
+                        fullName: 'Тестовый Администратор',
+                        email: 'admin@example.com',
+                        password: '123456',
+                        role: 'admin',
+                        adminCode: 'LLL',
+                        adminPosition: 'superadmin',
+                        newsletter: false,
+                        createdAt: new Date().toISOString()
+                    });
+                }
+
+                // Добавляем недостающих тестовых пользователей
+                if (testUsersToAdd.length > 0) {
+                    const allUsers = [...users, ...testUsersToAdd];
+                    localStorage.setItem(USERS_STORAGE_KEY, JSON.stringify(allUsers));
+                    console.log('Добавлены тестовые пользователи:', testUsersToAdd.length);
+                }
+            }
+
+            debugShowUsers();
+        }
+
+        // Инициализируем тестовые данные при загрузке страницы
+        initializeTestData();
+
+        // ============================================
+        // ОСНОВНОЙ КОД СТРАНИЦЫ ВХОДА
+        // ============================================
+
+        // Показать/скрыть пароль
+        const togglePassword = document.getElementById('togglePassword');
+        const passwordInput = document.getElementById('password');
+
+        togglePassword.addEventListener('click', function () {
+            const type = passwordInput.getAttribute('type') === 'password' ? 'text' : 'password';
+            passwordInput.setAttribute('type', type);
+            this.classList.toggle('fa-eye');
+            this.classList.toggle('fa-eye-slash');
+        });
+
+        // Автозаполнение последнего использованного email
+        const emailInput = document.getElementById('email');
+        const rememberCheckbox = document.getElementById('remember');
+
+        // Проверяем, есть ли сохраненный email
+        const savedEmail = localStorage.getItem('lastEmail');
+        const rememberMe = localStorage.getItem('rememberMe') === 'true';
+
+        if (savedEmail && rememberMe) {
+            emailInput.value = savedEmail;
+            rememberCheckbox.checked = true;
+        }
+
+        // Обработка отправки формы входа
+        document.getElementById('loginForm').addEventListener('submit', function (e) {
+            e.preventDefault();
+
+            const email = emailInput.value.trim().toLowerCase();
+            const password = passwordInput.value;
+            const remember = rememberCheckbox.checked;
+
+            console.log('Попытка входа:', { email, passwordLength: password.length });
+
+            // Сохраняем email, если выбрано "Запомнить меня"
+            if (remember) {
+                localStorage.setItem('lastEmail', email);
+                localStorage.setItem('rememberMe', 'true');
+            } else {
+                localStorage.removeItem('lastEmail');
+                localStorage.setItem('rememberMe', 'false');
+            }
+
+            // Проверяем пользователя
+            const user = checkUserCredentials(email, password);
+
+            if (user) {
+                // Сохраняем информацию о текущем пользователе в sessionStorage
+                sessionStorage.setItem('currentUser', JSON.stringify({
+                    id: user.id,
+                    fullName: user.fullName,
+                    email: user.email,
+                    role: user.role,
+                    childAge: user.childAge,
+                    adminPosition: user.adminPosition
+                }));
+
+                // Сообщение в зависимости от роли
+                let roleMessage = '';
+                switch (user.role) {
+                    case 'parent':
+                        roleMessage = 'Вы вошли как родитель.';
+                        break;
+                    case 'child':
+                        roleMessage = 'Вы вошли как дошкольник. Приятного обучения!';
+                        break;
+                    case 'admin':
+                        roleMessage = `Вы вошли как администратор (${user.adminPosition}).`;
+                        break;
+                }
+
+                alert(`✅ Добро пожаловать обратно, ${user.fullName}!\n\n${roleMessage}\n${remember ? 'Мы запомним вас на этом устройстве.' : ''}`);
+
+                // Перенаправление на страницу аккаунта через 1 секунду
+                setTimeout(() => {
+                    window.location.href = 'account.html';
+                }, 1000);
+            } else {
+                // Неверные данные - показываем более подробную ошибку
+                const users = getAllUsers();
+                const userExists = users.find(u => u.email.toLowerCase() === email.toLowerCase());
+
+                if (!userExists) {
+                    alert('❌ Ошибка входа!\n\nПользователь с таким email не найден.\n\nПожалуйста, проверьте email или зарегистрируйтесь.');
+                } else {
+                    alert('❌ Ошибка входа!\n\nНеверный пароль.\n\nПожалуйста, проверьте правильность введенного пароля.');
+                }
+
+                console.log('Ошибка входа. Пользователи в системе:', users);
+            }
+        });
+
+        // Обработчики для кнопок социальных сетей
+        document.querySelector('.social-btn.google').addEventListener('click', function () {
+            alert('Вход через Google\n\nВ реальном приложении здесь была бы интеграция с Google OAuth.');
+        });
+
+        document.querySelector('.social-btn.facebook').addEventListener('click', function () {
+            alert('Вход через Facebook\n\nВ реальном приложении здесь была бы интеграция с Facebook OAuth.');
+        });
+
+        // Восстановление пароля
+        document.querySelector('.forgot-password').addEventListener('click', function (e) {
+            e.preventDefault();
+            const email = prompt('Введите ваш email для восстановления пароля:', emailInput.value || '');
+            if (email) {
+                const users = getAllUsers();
+                const user = users.find(u => u.email.toLowerCase() === email.toLowerCase());
+
+                if (user) {
+                    alert(`Инструкция по восстановлению пароля отправлена на ${email}.\n\nДля демонстрации: ваш пароль: ${user.password}`);
+                } else {
+                    alert('Пользователь с таким email не найден!');
+                }
+            }
+        });
+
+        // Отладочная кнопка
+        document.getElementById('debugBtn').addEventListener('click', function() {
+            debugShowUsers();
+        });
+
+        // Кнопка очистки данных
+        document.getElementById('clearBtn').addEventListener('click', function() {
+            clearAllData();
+        });
+
+        // Отладочная информация при загрузке
+        console.log('Страница входа загружена');
+    </script>
+</body>
+</html>
