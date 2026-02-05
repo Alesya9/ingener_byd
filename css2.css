@@ -1,0 +1,406 @@
+/* style.css */
+
+/* Общие стили */
+/* Стили для сворачиваемых блоков тем */
+
+body {
+    font-family: 'Comic Sans MS', 'Arial Rounded MT Bold', sans-serif;
+    /* Яркий радужный градиент без синего внизу */
+    background: linear-gradient(135deg,
+        #FF6B8B 0%,
+        #FF8E53 25%,
+        #FFD166 50%,
+        #A8E6CF 75%,
+        #4ECDC4 100%);
+    background-size: 300% 300%;
+    animation: gradientBG 15s ease infinite;
+    margin: 0;
+    padding: 20px;
+    color: #333;
+    min-height: 100vh;
+}
+
+/* Анимация для фона */
+@keyframes gradientBG {
+    0% { background-position: 0% 50%; }
+    50% { background-position: 100% 50%; }
+    100% { background-position: 0% 50%; }
+}
+
+/* Шапка */
+header {
+    background: linear-gradient(90deg, #FF4081, #FF5722, #FF9800);
+    padding: 20px;
+    border-radius: 25px;
+    display: flex;
+    justify-content: center;
+    gap: 30px;
+    margin-bottom: 30px;
+    box-shadow: 0 10px 25px rgba(255, 64, 129, 0.4);
+    border: 6px solid #FFEB3B;
+}
+
+header a {
+    color: white;
+    text-decoration: none;
+    font-size: 1.8em; /* Увеличен с 1.4em */
+    font-weight: bold;
+    padding: 15px 30px;
+    background: rgba(255, 255, 255, 0.3);
+    border-radius: 20px;
+    transition: all 0.3s ease;
+    border: 4px solid white;
+    text-shadow: 2px 2px 3px rgba(0, 0, 0, 0.3);
+}
+
+header a:hover {
+    background: rgba(255, 255, 255, 0.5);
+    transform: scale(1.15); /* Увеличен эффект */
+    box-shadow: 0 8px 20px rgba(0, 0, 0, 0.4);
+}
+
+/* Заголовки */
+.zagolov {
+    text-align: center;
+    background: linear-gradient(45deg, #FF5722, #FF9800, #FFD166);
+    padding: 15px;
+    border-radius: 30px;
+    margin: 25px 0;
+    box-shadow: 0 8px 20px rgba(255, 87, 34, 0.4);
+    border: 6px dashed #FFEB3B;
+}
+
+h1 {
+    color: white;
+    font-size: 3.2em; /* Увеличен с 2.8em */
+    text-shadow: 4px 4px 0 #E64A19;
+    margin: 0;
+    padding: 15px;
+    letter-spacing: 1px;
+}
+
+h2 {
+    color: #D32F2F;
+    font-size: 2.6em; /* Увеличен с 2.2em */
+    background: #FFF9C4;
+    padding: 20px 25px;
+    border-radius: 25px;
+    border-left: 12px solid #FF9800;
+    margin-top: 35px;
+    box-shadow: 0 6px 15px rgba(255, 152, 0, 0.3);
+    line-height: 1.3;
+}
+
+h3 {
+    color: #1976D2;
+    font-size: 2.2em; /* Увеличен с 1.8em */
+    background: #E3F2FD;
+    padding: 18px 22px;
+    border-radius: 20px;
+    border-left: 10px solid #FF5722;
+    margin-top: 25px;
+    box-shadow: 0 5px 12px rgba(33, 150, 243, 0.2);
+}
+
+h4 {
+    color: #7B1FA2;
+    font-size: 1.8em; /* Увеличен с 1.4em */
+    margin-left: 25px;
+    padding: 10px 15px;
+    background: linear-gradient(90deg, #F3E5F5, white);
+    border-radius: 15px;
+    display: inline-block;
+}
+
+/* Параграфы */
+p {
+    font-size: 1.6em; /* Увеличен с 1.3em */
+    line-height: 1.7;
+    margin: 18px 0;
+    padding: 15px;
+    background: rgba(255, 255, 255, 0.9);
+    border-radius: 15px;
+    box-shadow: 0 4px 10px rgba(0, 0, 0, 0.1);
+}
+
+.opr {
+    background: #E8F5E9;
+    border: 5px solid #4CAF50;
+    border-radius: 25px;
+    padding: 20px;
+    font-weight: bold;
+    color: #2E7D32;
+    box-shadow: 0 7px 15px rgba(76, 175, 80, 0.3);
+    font-size: 1.7em;
+}
+
+.w {
+    background: #FFF3E0;
+    border-left: 8px solid #FF9800;
+    padding: 18px;
+    border-radius: 0 20px 20px 0;
+    font-weight: bold;
+    color: #EF6C00;
+    font-size: 1.7em;
+}
+
+.vyvod {
+    background: linear-gradient(45deg, #FFEB3B, #FFC107, #FF9800);
+    padding: 25px;
+    border-radius: 25px;
+    font-size: 1.8em; /* Увеличен с 1.5em */
+    text-align: center;
+    font-weight: bold;
+    border: 6px solid #FF9800;
+    box-shadow: 0 10px 25px rgba(255, 152, 0, 0.4);
+    text-shadow: 1px 1px 2px rgba(0, 0, 0, 0.2);
+}
+
+.zapomni {
+    background: #E1F5FE;
+    border: 5px dashed #03A9F4;
+    border-radius: 25px;
+    padding: 20px;
+    font-style: italic;
+    font-weight: bold;
+    color: #0277BD;
+    font-size: 1.7em;
+    box-shadow: 0 6px 15px rgba(3, 169, 244, 0.2);
+}
+
+/* Списки */
+ul, ol {
+    background: rgba(255, 255, 255, 0.95);
+    border-radius: 25px;
+    padding: 25px 45px;
+    margin: 25px;
+    border: 4px solid #FF9800;
+    box-shadow: 0 8px 20px rgba(0, 0, 0, 0.15);
+}
+
+li {
+    font-size: 1.5em; /* Увеличен с 1.2em */
+    margin: 12px 0;
+    padding: 12px;
+    background: rgba(255, 255, 255, 0.7);
+    border-radius: 12px;
+    transition: all 0.3s ease;
+    line-height: 1.5;
+}
+
+li:hover {
+    background: rgba(255, 235, 59, 0.4);
+    transform: translateX(12px);
+    box-shadow: 0 4px 10px rgba(255, 235, 59, 0.3);
+}
+
+/* Примеры кода */
+.primer {
+    background: #263238;
+    color: #80CBC4;
+    padding: 20px;
+    border-radius: 20px;
+    font-family: 'Courier New', monospace;
+    font-size: 1.6em; /* Увеличен с 1.4em */
+    margin: 20px 35px;
+    border-left: 8px solid #00BCD4;
+    overflow-x: auto;
+    box-shadow: 0 7px 20px rgba(0, 0, 0, 0.4);
+    line-height: 1.5;
+}
+
+.primertab {
+    background: #37474F;
+    color: #AED581;
+    padding: 15px 25px;
+    border-radius: 15px;
+    font-family: 'Courier New', monospace;
+    font-size: 1.5em; /* Увеличен с 1.3em */
+    margin-left: 60px;
+    border-left: 6px solid #FF9800;
+    box-shadow: 0 5px 15px rgba(0, 0, 0, 0.3);
+}
+
+/* Подзаголовок */
+.podzag {
+    background: linear-gradient(90deg, #FF9800, #FF5722, #E64A19);
+    color: white;
+    padding: 20px;
+    border-radius: 25px;
+    text-align: center;
+    font-size: 2.4em; /* Увеличен с 2em */
+    text-shadow: 3px 3px 0 #D84315;
+    margin: 25px 0;
+    box-shadow: 0 8px 25px rgba(255, 87, 34, 0.5);
+    border: 4px solid #FFEB3B;
+}
+
+/* Специальные стили для нумерованных списков */
+ol {
+    counter-reset: item;
+}
+
+ol li {
+    counter-increment: item;
+    position: relative;
+    padding-left: 60px;
+}
+
+ol li:before {
+    content: counter(item);
+    background: linear-gradient(45deg, #FF4081, #FF5722);
+    color: white;
+    font-weight: bold;
+    font-size: 1.8em;
+    position: absolute;
+    left: -20px;
+    top: 50%;
+    transform: translateY(-50%);
+    width: 50px;
+    height: 50px;
+    border-radius: 50%;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    box-shadow: 0 4px 10px rgba(255, 64, 129, 0.4);
+    border: 3px solid white;
+}
+
+/* Анимации */
+@keyframes bounce {
+    0%, 100% { transform: translateY(0); }
+    50% { transform: translateY(-15px); }
+}
+
+.zagolov:hover {
+    animation: bounce 0.6s ease;
+    transform: scale(1.02);
+}
+
+/* Медиа запросы для адаптивности */
+@media (max-width: 768px) {
+    header {
+        flex-direction: column;
+        gap: 20px;
+        align-items: center;
+        padding: 15px;
+    }
+
+    header a {
+        width: 85%;
+        text-align: center;
+        font-size: 1.6em;
+        padding: 12px 20px;
+    }
+
+    h1 {
+        font-size: 2.6em;
+        padding: 12px;
+    }
+
+    h2 {
+        font-size: 2.2em;
+        padding: 15px 20px;
+    }
+
+    h3 {
+        font-size: 1.9em;
+        padding: 15px 18px;
+    }
+
+    h4 {
+        font-size: 1.5em;
+    }
+
+    p {
+        font-size: 1.4em;
+        padding: 12px;
+    }
+
+    .opr, .w, .zapomni {
+        font-size: 1.5em;
+        padding: 15px;
+    }
+
+    .vyvod {
+        font-size: 1.6em;
+        padding: 20px;
+    }
+
+    .primer {
+        margin: 15px;
+        font-size: 1.4em;
+        padding: 15px;
+    }
+
+    .primertab {
+        font-size: 1.3em;
+        margin-left: 30px;
+        padding: 12px 20px;
+    }
+
+    ul, ol {
+        padding: 20px 30px;
+        margin: 20px;
+    }
+
+    li {
+        font-size: 1.3em;
+        padding: 10px;
+    }
+
+    .podzag {
+        font-size: 2em;
+        padding: 15px;
+    }
+}
+
+@media (max-width: 480px) {
+    body {
+        padding: 15px;
+    }
+
+    h1 {
+        font-size: 2.2em;
+    }
+
+    h2 {
+        font-size: 1.9em;
+    }
+
+    h3 {
+        font-size: 1.6em;
+    }
+
+    p {
+        font-size: 1.2em;
+    }
+
+    header a {
+        font-size: 1.4em;
+    }
+}
+
+/* Дополнительные декоративные элементы */
+body:before {
+    content: "";
+    position: fixed;
+    top: 0;
+    left: 0;
+    width: 100%;
+    height: 100%;
+    background-image:
+        radial-gradient(circle at 20% 80%, rgba(255, 64, 129, 0.15) 3%, transparent 3.5%),
+        radial-gradient(circle at 80% 20%, rgba(255, 152, 0, 0.15) 3%, transparent 3.5%),
+        radial-gradient(circle at 40% 40%, rgba(255, 235, 59, 0.15) 3%, transparent 3.5%),
+        radial-gradient(circle at 60% 60%, rgba(76, 175, 80, 0.15) 3%, transparent 3.5%);
+    background-size: 120px 120px;
+    z-index: -1;
+    pointer-events: none;
+    animation: bubbles 20s linear infinite;
+}
+
+@keyframes bubbles {
+    0% { background-position: 0 0, 100px 150px, 200px 50px, 300px 100px; }
+    100% { background-position: 0 200px, 100px 350px, 200px 250px, 300px 300px; }
+}

@@ -1,0 +1,599 @@
+/* style.css - Яркий стиль для дошкольников */
+
+/* Основные настройки */
+* {
+    margin: 0;
+    padding: 0;
+    box-sizing: border-box;
+    font-family: 'Comic Neue', 'Comic Sans MS', cursive, sans-serif;
+}
+
+body {
+    background: radial-gradient(circle at 20% 80%, #ff9a9e, transparent 30%),
+                radial-gradient(circle at 80% 20%, #a8e6cf, transparent 30%),
+                radial-gradient(circle at 40% 40%, #ffd166, transparent 25%),
+                radial-gradient(circle at 60% 60%, #4ecdc4, transparent 25%),
+                linear-gradient(45deg, #ff6b6b, #ff8e53, #a8e6cf, #4ecdc4);
+    background-size: 400% 400%;
+    animation: gradientBG 25s ease infinite;
+    min-height: 100vh;
+    padding: 20px;
+    position: relative;
+    overflow-x: hidden;
+}
+
+/* Анимация градиента фона */
+@keyframes gradientBG {
+    0% { background-position: 0% 50%; }
+    50% { background-position: 100% 50%; }
+    100% { background-position: 0% 50%; }
+}
+
+/* Пузырьки на фоне */
+.bubble {
+    position: fixed;
+    border-radius: 50%;
+    background: rgba(255, 255, 255, 0.2);
+    animation: floatUp 20s infinite linear;
+    z-index: -1;
+}
+
+@keyframes floatUp {
+    0% {
+        transform: translateY(100vh) rotate(0deg);
+        opacity: 0;
+    }
+    10% {
+        opacity: 0.7;
+    }
+    90% {
+        opacity: 0.7;
+    }
+    100% {
+        transform: translateY(-100px) rotate(360deg);
+        opacity: 0;
+    }
+}
+
+/* Шапка сайта */
+.tr {
+    background: linear-gradient(90deg, #ff9a9e, #fad0c4, #fad0c4, #ff9a9e);
+    padding: 25px 40px;
+    border-radius: 50px;
+    box-shadow:
+        0 15px 35px rgba(255, 105, 180, 0.4),
+        inset 0 -5px 15px rgba(0, 0, 0, 0.1),
+        inset 0 5px 15px rgba(255, 255, 255, 0.5);
+    margin-bottom: 40px;
+    display: flex;
+    justify-content: center;
+    gap: 60px;
+    flex-wrap: wrap;
+    position: relative;
+    border: 8px solid #fff;
+    animation: headerGlow 3s infinite alternate;
+}
+
+@keyframes headerGlow {
+    0% { box-shadow: 0 15px 35px rgba(255, 105, 180, 0.4); }
+    100% { box-shadow: 0 15px 35px rgba(100, 200, 255, 0.6); }
+}
+
+.tr a {
+    color: white;
+    text-decoration: none;
+    font-size: 28px;
+    font-weight: bold;
+    padding: 20px 40px;
+    background: linear-gradient(45deg, #ff6b6b, #ff8e53);
+    border-radius: 30px;
+    transition: all 0.3s ease;
+    box-shadow:
+        0 8px 0 #ff4757,
+        0 15px 20px rgba(0, 0, 0, 0.2);
+    border: 5px solid white;
+    text-shadow: 3px 3px 0 rgba(0, 0, 0, 0.2);
+    position: relative;
+    overflow: hidden;
+}
+
+.tr a:hover {
+    transform: translateY(-10px) scale(1.05);
+    box-shadow:
+        0 18px 0 #ff4757,
+        0 25px 30px rgba(0, 0, 0, 0.3);
+    background: linear-gradient(45deg, #ff8e53, #ff6b6b);
+}
+
+.tr a:active {
+    transform: translateY(-5px) scale(1.02);
+}
+
+.tr a:before {
+    content: '';
+    position: absolute;
+    top: 0;
+    left: -100%;
+    width: 100%;
+    height: 100%;
+    background: linear-gradient(90deg, transparent, rgba(255, 255, 255, 0.4), transparent);
+    transition: 0.5s;
+}
+
+.tr a:hover:before {
+    left: 100%;
+}
+
+/* Основной контейнер */
+.shir {
+    background: rgba(255, 255, 255, 0.95);
+    border-radius: 40px;
+    padding: 40px;
+    box-shadow:
+        0 20px 40px rgba(0, 0, 0, 0.15),
+        inset 0 0 50px rgba(255, 215, 0, 0.1);
+    border: 12px solid;
+    border-image: linear-gradient(45deg, #ff6b6b, #4ecdc4, #45b7d1, #ffd166) 1;
+    position: relative;
+    overflow: hidden;
+}
+
+.shir:before {
+    content: '';
+    position: absolute;
+    top: 0;
+    left: 0;
+    right: 0;
+    height: 25px;
+    background: repeating-linear-gradient(
+        90deg,
+        #ff6b6b,
+        #ff6b6b 20px,
+        #4ecdc4 20px,
+        #4ecdc4 40px,
+        #45b7d1 40px,
+        #45b7d1 60px,
+        #ffd166 60px,
+        #ffd166 80px
+    );
+}
+
+/* Заголовки */
+h1 {
+    color: #ff6b6b;
+    font-size: 56px;
+    text-align: center;
+    margin-bottom: 40px;
+    text-shadow:
+        4px 4px 0 #ffd166,
+        8px 8px 0 rgba(0, 0, 0, 0.1);
+    background: linear-gradient(transparent 70%, rgba(255, 215, 0, 0.3) 70%);
+    padding: 30px;
+    border-radius: 30px;
+    border: 10px dashed #4ecdc4;
+    animation: titleBounce 2s infinite alternate;
+    position: relative;
+}
+
+@keyframes titleBounce {
+    0% { transform: translateY(0); }
+    100% { transform: translateY(-10px); }
+}
+
+h1:after {
+    content: '✨ 🎮 🎨';
+    display: block;
+    font-size: 48px;
+    margin-top: 20px;
+}
+
+@keyframes iconSpin {
+    0% { transform: rotate(0deg); }
+    100% { transform: rotate(360deg); }
+}
+
+h2 {
+    color: #45b7d1;
+    font-size: 42px;
+    margin: 50px 0 30px;
+    padding: 20px 30px;
+    background: linear-gradient(90deg, #e0f7fa, #ffffff);
+    border-radius: 25px;
+    border-left: 20px solid #45b7d1;
+    text-shadow: 2px 2px 0 #ffd166;
+    box-shadow: 0 10px 20px rgba(69, 183, 209, 0.2);
+    position: relative;
+}
+
+h2:before {
+    content: '📚';
+    position: absolute;
+    right: 30px;
+    animation: float 3s ease-in-out infinite;
+}
+
+@keyframes float {
+    0%, 100% { transform: translateY(0); }
+    50% { transform: translateY(-10px); }
+}
+
+/* Контейнер задач */
+.content {
+    display: flex;
+    flex-wrap: wrap;
+    gap: 40px;
+    justify-content: center;
+    margin-bottom: 40px;
+}
+
+/* Карточки задач */
+.zadachi {
+    background: linear-gradient(145deg, #ffffff, #f0f0f0);
+    border-radius: 30px;
+    padding: 30px;
+    flex: 1;
+    min-width: 320px;
+    max-width: 550px;
+    box-shadow:
+        0 15px 30px rgba(0, 0, 0, 0.1),
+        inset 0 0 30px rgba(255, 255, 255, 0.8);
+    border: 8px solid;
+    transition: all 0.4s cubic-bezier(0.175, 0.885, 0.32, 1.275);
+    position: relative;
+    overflow: hidden;
+}
+
+.zadachi:hover {
+    transform: translateY(-15px) scale(1.02);
+    box-shadow:
+        0 25px 50px rgba(0, 0, 0, 0.2),
+        inset 0 0 40px rgba(255, 255, 255, 0.9);
+}
+
+.zadachi:nth-child(3n+1) {
+    border-color: #ff6b6b;
+    background: linear-gradient(145deg, #fff5f5, #ffeaea);
+}
+
+.zadachi:nth-child(3n+2) {
+    border-color: #4ecdc4;
+    background: linear-gradient(145deg, #f0fffd, #e0fffb);
+}
+
+.zadachi:nth-child(3n+3) {
+    border-color: #ffd166;
+    background: linear-gradient(145deg, #fff9e6, #fff4cc);
+}
+
+.zadachi:before {
+    content: '🎯';
+    position: absolute;
+    top: -25px;
+    left: -25px;
+    background: #ff6b6b;
+    width: 60px;
+    height: 60px;
+    border-radius: 50%;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    font-size: 32px;
+    color: white;
+    box-shadow: 0 8px 0 #ff4757;
+    border: 5px solid white;
+    z-index: 1;
+    animation: pulse 2s infinite;
+}
+
+@keyframes pulse {
+    0% { transform: scale(1); }
+    50% { transform: scale(1.1); }
+    100% { transform: scale(1); }
+}
+
+/* Заголовки задач */
+h3 {
+    color: #333;
+    font-size: 32px;
+    margin-bottom: 20px;
+    padding-bottom: 15px;
+    border-bottom: 6px dotted;
+    position: relative;
+    display: inline-block;
+}
+
+.zadachi:nth-child(3n+1) h3 {
+    color: #ff6b6b;
+    border-bottom-color: #ff6b6b;
+}
+
+.zadachi:nth-child(3n+2) h3 {
+    color: #45b7d1;
+    border-bottom-color: #45b7d1;
+}
+
+.zadachi:nth-child(3n+3) h3 {
+    color: #ffb347;
+    border-bottom-color: #ffb347;
+}
+
+/* Текст задач */
+p {
+    color: #444;
+    font-size: 30px;
+    line-height: 1.6;
+    margin-bottom: 25px;
+    background: white;
+    padding: 20px;
+    border-radius: 20px;
+    border-left: 12px solid;
+    box-shadow: 0 5px 15px rgba(0, 0, 0, 0.05);
+}
+
+.zadachi:nth-child(3n+1) p {
+    border-left-color: #ff6b6b;
+}
+
+.zadachi:nth-child(3n+2) p {
+    border-left-color: #4ecdc4;
+}
+
+.zadachi:nth-child(3n+3) p {
+    border-left-color: #ffd166;
+}
+
+/* Элементы details */
+details {
+    background: linear-gradient(145deg, #f8f9ff, #e6f0ff);
+    border-radius: 25px;
+    padding: 20px;
+    border: 6px solid #45b7d1;
+    margin-top: 20px;
+    transition: all 0.3s ease;
+}
+
+details:hover {
+    border-color: #ff6b6b;
+    transform: scale(1.02);
+}
+
+summary {
+    color: #ff6b6b;
+    font-size: 24px;
+    font-weight: bold;
+    cursor: pointer;
+    padding: 15px 20px;
+    background: linear-gradient(90deg, #fff0f3, #ffeef1);
+    border-radius: 20px;
+    border: 4px solid #ff6b6b;
+    transition: all 0.3s ease;
+    list-style: none;
+    position: relative;
+    display: flex;
+    align-items: center;
+    gap: 15px;
+}
+
+summary::-webkit-details-marker {
+    display: none;
+}
+
+summary:before {
+    content: '🔽';
+    font-size: 20px;
+    transition: transform 0.3s ease;
+}
+
+details[open] summary:before {
+    content: '🔼';
+    transform: rotate(180deg);
+}
+
+summary:hover {
+    background: linear-gradient(90deg, #ff6b6b, #ff8e53);
+    color: white;
+    transform: translateY(-3px);
+    box-shadow: 0 8px 15px rgba(255, 107, 107, 0.3);
+}
+
+/* Таблицы */
+table {
+    width: 100%;
+    border-collapse: separate;
+    border-spacing: 0;
+    margin-top: 20px;
+    background: white;
+    border-radius: 20px;
+    overflow: hidden;
+    box-shadow: 0 10px 25px rgba(0, 0, 0, 0.1);
+    border: 5px solid #ffd166;
+}
+
+th {
+    background: linear-gradient(90deg, #ff6b6b, #ff8e53);
+    color: white;
+    padding: 20px;
+    font-size: 24px;
+    text-align: center;
+    position: relative;
+}
+
+th:after {
+    content: '';
+    position: absolute;
+    bottom: 0;
+    left: 10%;
+    width: 80%;
+    height: 4px;
+    background: white;
+    border-radius: 2px;
+}
+
+td {
+    padding: 18px 20px;
+    border-bottom: 3px dotted #ffd166;
+    font-size: 20px;
+    text-align: center;
+    transition: all 0.3s ease;
+}
+
+tr:hover td {
+    background: rgba(255, 214, 102, 0.1);
+    transform: scale(1.01);
+}
+
+tr:nth-child(even) {
+    background: linear-gradient(90deg, #f8f9ff, #f0f7ff);
+}
+
+/* Блоки с кодом */
+pre {
+    font-family: 'Comic Neue', cursive;
+    font-size: 18px;
+    line-height: 1.5;
+    background: linear-gradient(90deg, #2d3436, #636e72);
+    color: #dfe6e9;
+    padding: 20px;
+    border-radius: 15px;
+    border-left: 10px solid #ff6b6b;
+    overflow-x: auto;
+    margin: 10px 0;
+}
+
+/* Адаптивность */
+@media (max-width: 1024px) {
+    .content {
+        gap: 30px;
+    }
+
+    .zadachi {
+        min-width: 280px;
+    }
+}
+
+@media (max-width: 768px) {
+    h1 {
+        font-size: 40px;
+        padding: 20px;
+    }
+
+    h2 {
+        font-size: 32px;
+        padding: 15px 20px;
+    }
+
+    .tr {
+        padding: 20px;
+        gap: 20px;
+    }
+
+    .tr a {
+        font-size: 22px;
+        padding: 15px 25px;
+    }
+
+    h3 {
+        font-size: 26px;
+    }
+
+    p {
+        font-size: 20px;
+        padding: 15px;
+    }
+
+    .shir {
+        padding: 25px;
+    }
+}
+
+@media (max-width: 480px) {
+    body {
+        padding: 10px;
+    }
+
+    h1 {
+        font-size: 32px;
+    }
+
+    h2 {
+        font-size: 26px;
+    }
+
+    .tr {
+        border-radius: 30px;
+        padding: 15px;
+    }
+
+    .tr a {
+        font-size: 18px;
+        padding: 12px 20px;
+        width: 100%;
+        text-align: center;
+    }
+
+    .shir {
+        padding: 20px 15px;
+        border-width: 8px;
+    }
+
+    .zadachi {
+        padding: 20px;
+    }
+}
+
+/* Скроллбар */
+::-webkit-scrollbar {
+    width: 16px;
+}
+
+::-webkit-scrollbar-track {
+    background: linear-gradient(180deg, #ff6b6b, #4ecdc4);
+    border-radius: 10px;
+}
+
+::-webkit-scrollbar-thumb {
+    background: linear-gradient(180deg, #ffd166, #ff8e53);
+    border-radius: 10px;
+    border: 3px solid white;
+}
+
+::-webkit-scrollbar-thumb:hover {
+    background: linear-gradient(180deg, #ff8e53, #ff6b6b);
+}
+
+/* Дополнительные анимации */
+@keyframes confetti {
+    0% { transform: translateY(-100px) rotate(0deg); opacity: 1; }
+    100% { transform: translateY(100vh) rotate(360deg); opacity: 0; }
+}
+
+.confetti {
+    position: fixed;
+    width: 15px;
+    height: 15px;
+    background: #ff6b6b;
+    animation: confetti 5s linear forwards;
+    z-index: 1000;
+}
+
+/* Кнопки в таблицах (если понадобятся) */
+.table-btn {
+    background: linear-gradient(45deg, #4ecdc4, #45b7d1);
+    color: white;
+    border: none;
+    padding: 10px 20px;
+    border-radius: 25px;
+    font-size: 18px;
+    cursor: pointer;
+    transition: all 0.3s ease;
+    box-shadow: 0 5px 0 #3aa8a0;
+}
+
+.table-btn:hover {
+    transform: translateY(-3px);
+    box-shadow: 0 8px 0 #3aa8a0;
+}
+
+.table-btn:active {
+    transform: translateY(-1px);
+}

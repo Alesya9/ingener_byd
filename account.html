@@ -1,0 +1,1649 @@
+
+<!DOCTYPE html>
+<html lang="ru">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Мой аккаунт | Программирование для дошкольников</title>
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
+    <style>
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+            font-family: 'Comic Sans MS', 'Chalkboard SE', 'Arial Rounded MT Bold', sans-serif;
+        }
+
+        body {
+            background: linear-gradient(135deg, #f5f7fa 0%, #c3cfe2 100%);
+            min-height: 100vh;
+            color: #333;
+        }
+
+        .header {
+            background: linear-gradient(to right, #6a11cb, #2575fc);
+            color: white;
+            padding: 20px;
+            box-shadow: 0 4px 12px rgba(0, 0, 0, 0.1);
+        }
+
+        .header-content {
+            max-width: 1200px;
+            margin: 0 auto;
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+        }
+
+        .logo {
+            display: flex;
+            align-items: center;
+            gap: 15px;
+        }
+
+        .logo-icon {
+            font-size: 2rem;
+            color: #ffcc00;
+        }
+
+        .logo h1 {
+            font-size: 1.8rem;
+            text-shadow: 2px 2px 0 #4a148c;
+        }
+
+        .nav-buttons {
+            display: flex;
+            gap: 10px;
+            margin-right: 20px;
+        }
+
+        .nav-btn {
+            background-color: rgba(255, 255, 255, 0.2);
+            color: white;
+            border: 2px solid white;
+            padding: 8px 15px;
+            border-radius: 20px;
+            cursor: pointer;
+            transition: all 0.3s;
+            font-weight: bold;
+            text-decoration: none;
+            display: flex;
+            align-items: center;
+            gap: 5px;
+            font-size: 0.9rem;
+        }
+
+        .nav-btn:hover {
+            background-color: white;
+            color: #6a11cb;
+        }
+
+        .user-info {
+            display: flex;
+            align-items: center;
+            gap: 20px;
+        }
+
+        .user-avatar {
+            width: 60px;
+            height: 60px;
+            border-radius: 50%;
+            background: linear-gradient(45deg, #ff6b6b, #ff8e53);
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            font-size: 1.5rem;
+            color: white;
+            font-weight: bold;
+        }
+
+        .user-details h2 {
+            font-size: 1.4rem;
+            margin-bottom: 5px;
+        }
+
+        .user-details .role {
+            background-color: rgba(255, 255, 255, 0.2);
+            padding: 3px 10px;
+            border-radius: 15px;
+            font-size: 0.9rem;
+            display: inline-block;
+        }
+
+        .logout-btn {
+            background-color: rgba(255, 255, 255, 0.2);
+            color: white;
+            border: 2px solid white;
+            padding: 8px 20px;
+            border-radius: 20px;
+            cursor: pointer;
+            transition: all 0.3s;
+            font-weight: bold;
+        }
+
+        .logout-btn:hover {
+            background-color: white;
+            color: #6a11cb;
+        }
+
+        .container {
+            max-width: 1200px;
+            margin: 30px auto;
+            padding: 0 20px;
+        }
+
+        .welcome-section {
+            background: white;
+            border-radius: 20px;
+            padding: 30px;
+            margin-bottom: 30px;
+            box-shadow: 0 8px 20px rgba(0, 0, 0, 0.08);
+            text-align: center;
+        }
+
+        .welcome-title {
+            color: #4a148c;
+            font-size: 2rem;
+            margin-bottom: 15px;
+        }
+
+        .welcome-message {
+            color: #5d4037;
+            font-size: 1.2rem;
+            line-height: 1.6;
+            max-width: 800px;
+            margin: 0 auto;
+        }
+
+        .dashboard {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(350px, 1fr));
+            gap: 25px;
+            margin-bottom: 30px;
+        }
+
+        .card {
+            background: white;
+            border-radius: 20px;
+            padding: 25px;
+            box-shadow: 0 8px 20px rgba(0, 0, 0, 0.08);
+            transition: transform 0.3s;
+        }
+
+        .card:hover {
+            transform: translateY(-5px);
+        }
+
+        .card-header {
+            display: flex;
+            align-items: center;
+            gap: 15px;
+            margin-bottom: 20px;
+            padding-bottom: 15px;
+            border-bottom: 3px solid #ffcc00;
+        }
+
+        .card-icon {
+            font-size: 2rem;
+            color: #6a11cb;
+        }
+
+        .card-title {
+            color: #4a148c;
+            font-size: 1.5rem;
+        }
+
+        /* Стили для администратора */
+        .admin-card {
+            border-top: 5px solid #ff6b6b;
+        }
+
+        .admin-stats {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(150px, 1fr));
+            gap: 15px;
+            margin-bottom: 20px;
+        }
+
+        .stat-box {
+            background: linear-gradient(135deg, #6a11cb, #2575fc);
+            color: white;
+            padding: 20px;
+            border-radius: 15px;
+            text-align: center;
+        }
+
+        .stat-number {
+            font-size: 2.5rem;
+            font-weight: bold;
+            margin-bottom: 5px;
+        }
+
+        .stat-label {
+            font-size: 0.9rem;
+            opacity: 0.9;
+        }
+
+        .reviews-list {
+            max-height: 300px;
+            overflow-y: auto;
+            padding-right: 10px;
+        }
+
+        .review-item {
+            background-color: #f9f9f9;
+            padding: 15px;
+            border-radius: 10px;
+            margin-bottom: 15px;
+            border-left: 4px solid #ffcc00;
+        }
+
+        .review-header {
+            display: flex;
+            justify-content: space-between;
+            margin-bottom: 10px;
+        }
+
+        .review-author {
+            font-weight: bold;
+            color: #4a148c;
+        }
+
+        .review-date {
+            color: #757575;
+            font-size: 0.9rem;
+        }
+
+        .review-rating {
+            color: #ffcc00;
+            margin-bottom: 10px;
+        }
+
+        .review-text {
+            color: #5d4037;
+            line-height: 1.5;
+            margin-bottom: 10px;
+        }
+
+        .comment-section {
+            margin-top: 15px;
+            padding-top: 15px;
+            border-top: 1px solid #e0e0e0;
+        }
+
+        .comment-item {
+            background-color: #f0f8ff;
+            padding: 10px;
+            border-radius: 8px;
+            margin-bottom: 8px;
+            font-size: 0.9rem;
+        }
+
+        .comment-header {
+            display: flex;
+            justify-content: space-between;
+            margin-bottom: 5px;
+            font-size: 0.85rem;
+        }
+
+        .comment-author {
+            color: #2575fc;
+            font-weight: bold;
+        }
+
+        .comment-date {
+            color: #888;
+        }
+
+        .comment-form {
+            margin-top: 10px;
+        }
+
+        .comment-input {
+            width: 100%;
+            padding: 8px 12px;
+            border: 2px solid #ffcc00;
+            border-radius: 10px;
+            font-size: 0.9rem;
+            resize: vertical;
+            margin-bottom: 8px;
+        }
+
+        .comment-btn {
+            background: linear-gradient(to right, #4CAF50, #8BC34A);
+            color: white;
+            border: none;
+            padding: 8px 15px;
+            border-radius: 10px;
+            cursor: pointer;
+            font-size: 0.9rem;
+            display: flex;
+            align-items: center;
+            gap: 5px;
+        }
+
+        /* Стили для отзывов */
+        .rating-stars {
+            display: flex;
+            gap: 5px;
+            margin-bottom: 15px;
+        }
+
+        .star {
+            font-size: 1.5rem;
+            color: #ddd;
+            cursor: pointer;
+            transition: color 0.2s;
+        }
+
+        .star.active {
+            color: #ffcc00;
+        }
+
+        .review-form textarea {
+            width: 100%;
+            height: 120px;
+            padding: 15px;
+            border: 3px solid #ffcc00;
+            border-radius: 15px;
+            font-size: 1rem;
+            resize: vertical;
+            margin-bottom: 15px;
+        }
+
+        .review-form textarea:focus {
+            outline: none;
+            border-color: #ff6b6b;
+        }
+
+        .submit-review-btn {
+            background: linear-gradient(to right, #ff6b6b, #ff8e53);
+            color: white;
+            border: none;
+            padding: 12px 25px;
+            border-radius: 15px;
+            font-size: 1.1rem;
+            font-weight: bold;
+            cursor: pointer;
+            transition: all 0.3s;
+        }
+
+        .submit-review-btn:hover {
+            transform: translateY(-2px);
+            box-shadow: 0 5px 15px rgba(255, 107, 107, 0.3);
+        }
+
+        /* Стили для родителя */
+        .parent-card {
+            border-top: 5px solid #4caf50;
+        }
+
+        .children-list {
+            margin: 15px 0;
+        }
+
+        .child-item {
+            background: linear-gradient(135deg, #f5f7fa, #e3f2fd);
+            padding: 15px;
+            border-radius: 10px;
+            margin-bottom: 10px;
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+        }
+
+        .child-name {
+            font-weight: bold;
+            color: #4a148c;
+        }
+
+        .child-age {
+            color: #666;
+            font-size: 0.9rem;
+        }
+
+        .child-progress {
+            font-size: 0.9rem;
+            color: #4CAF50;
+            font-weight: bold;
+        }
+
+        .add-child-btn {
+            background: linear-gradient(to right, #4CAF50, #8BC34A);
+            color: white;
+            border: none;
+            padding: 10px 20px;
+            border-radius: 10px;
+            cursor: pointer;
+            font-size: 0.9rem;
+            display: flex;
+            align-items: center;
+            gap: 8px;
+            margin-top: 10px;
+        }
+
+        .site-rating {
+            text-align: center;
+            margin-bottom: 20px;
+        }
+
+        .average-rating {
+            font-size: 3rem;
+            font-weight: bold;
+            color: #4a148c;
+            margin-bottom: 10px;
+        }
+
+        .rating-description {
+            color: #5d4037;
+            font-size: 1.1rem;
+            margin-bottom: 20px;
+        }
+
+        .rating-distribution {
+            margin-top: 20px;
+        }
+
+        .distribution-item {
+            display: flex;
+            align-items: center;
+            margin-bottom: 10px;
+        }
+
+        .distribution-star {
+            width: 80px;
+            color: #ffcc00;
+        }
+
+        .distribution-bar {
+            flex: 1;
+            height: 20px;
+            background-color: #e0e0e0;
+            border-radius: 10px;
+            margin: 0 10px;
+            overflow: hidden;
+        }
+
+        .distribution-fill {
+            height: 100%;
+            background: linear-gradient(to right, #ff6b6b, #ff8e53);
+            border-radius: 10px;
+        }
+
+        .distribution-percent {
+            width: 40px;
+            text-align: right;
+            color: #5d4037;
+        }
+
+        /* Стили для ученика */
+        .child-card {
+            border-top: 5px solid #ff9800;
+        }
+
+        .child-progress-info {
+            text-align: center;
+            margin-bottom: 20px;
+        }
+
+        .progress-number {
+            font-size: 2.5rem;
+            font-weight: bold;
+            color: #4a148c;
+        }
+
+        .progress-label {
+            color: #666;
+            font-size: 1rem;
+        }
+
+        .progress-bar-container {
+            height: 20px;
+            background-color: #e0e0e0;
+            border-radius: 10px;
+            overflow: hidden;
+            margin: 20px 0;
+        }
+
+        .progress-bar {
+            height: 100%;
+            background: linear-gradient(to right, #6a11cb, #2575fc);
+            border-radius: 10px;
+            transition: width 0.5s ease-in-out;
+        }
+
+        /* Общие стили для отзывов */
+        .all-reviews-section {
+            margin-top: 25px;
+        }
+
+        .section-title {
+            color: #4a148c;
+            font-size: 1.3rem;
+            margin-bottom: 15px;
+            padding-bottom: 10px;
+            border-bottom: 2px solid #ffcc00;
+        }
+
+        /* Модальные окна */
+        .modal-overlay {
+            position: fixed;
+            top: 0;
+            left: 0;
+            right: 0;
+            bottom: 0;
+            background: rgba(0, 0, 0, 0.5);
+            display: none;
+            justify-content: center;
+            align-items: center;
+            z-index: 1000;
+        }
+
+        .modal {
+            background: white;
+            border-radius: 20px;
+            padding: 30px;
+            width: 90%;
+            max-width: 500px;
+            box-shadow: 0 15px 35px rgba(0, 0, 0, 0.2);
+        }
+
+        .modal-header {
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+            margin-bottom: 20px;
+        }
+
+        .modal-title {
+            color: #4a148c;
+            font-size: 1.5rem;
+        }
+
+        .close-modal {
+            background: none;
+            border: none;
+            font-size: 1.5rem;
+            color: #666;
+            cursor: pointer;
+        }
+
+        .form-group {
+            margin-bottom: 20px;
+        }
+
+        .form-label {
+            display: block;
+            margin-bottom: 8px;
+            color: #5d4037;
+            font-weight: bold;
+        }
+
+        .form-input {
+            width: 100%;
+            padding: 12px 15px;
+            border-radius: 10px;
+            border: 2px solid #ffcc00;
+            font-size: 1rem;
+        }
+
+        .modal-submit-btn {
+            background: linear-gradient(to right, #6a11cb, #2575fc);
+            color: white;
+            border: none;
+            padding: 12px 25px;
+            border-radius: 15px;
+            font-size: 1.1rem;
+            font-weight: bold;
+            cursor: pointer;
+            width: 100%;
+        }
+
+        /* Общие стили */
+        .footer {
+            text-align: center;
+            padding: 30px;
+            color: #5d4037;
+            border-top: 2px dashed #ffcc00;
+            margin-top: 40px;
+        }
+
+        .hidden {
+            display: none !important;
+        }
+
+        /* Анимации */
+        @keyframes fadeIn {
+            from { opacity: 0; transform: translateY(20px); }
+            to { opacity: 1; transform: translateY(0); }
+        }
+
+        .card {
+            animation: fadeIn 0.5s ease-out;
+        }
+
+        /* Адаптивность */
+        @media (max-width: 768px) {
+            .header-content {
+                flex-direction: column;
+                gap: 15px;
+                text-align: center;
+            }
+
+            .nav-buttons {
+                margin-right: 0;
+                justify-content: center;
+            }
+
+            .user-info {
+                flex-direction: column;
+            }
+
+            .dashboard {
+                grid-template-columns: 1fr;
+            }
+
+            .welcome-title {
+                font-size: 1.6rem;
+            }
+
+            .admin-stats {
+                grid-template-columns: repeat(2, 1fr);
+            }
+        }
+
+        @media (max-width: 480px) {
+            .container {
+                padding: 0 15px;
+            }
+
+            .card {
+                padding: 20px;
+            }
+
+            .admin-stats {
+                grid-template-columns: 1fr;
+            }
+        }
+    </style>
+</head>
+<body>
+    <div class="header">
+        <div class="header-content">
+            <div class="logo">
+                <i class="fas fa-laptop-code logo-icon"></i>
+                <h1>Программирование для дошкольников</h1>
+            </div>
+            <div class="nav-buttons">
+                <a href="proektsayt.html" class="nav-btn">
+                    <i class="fas fa-home"></i> Главная
+                </a>
+                <a href="zadachi.html" target="_blank" class="nav-btn">
+                    <i class="fas fa-tasks"></i> Задачи
+                </a>
+                <a href="tren.html" target="_blank" class="nav-btn">
+                    <i class="fas fa-gamepad"></i> Тренажер
+                </a>
+            </div>
+            <div class="user-info">
+                <div class="user-avatar" id="userAvatar">U</div>
+                <div class="user-details">
+                    <h2 id="userName">Пользователь</h2>
+                    <div class="role" id="userRole">Роль</div>
+                </div>
+                <button class="logout-btn" id="logoutBtn">
+                    <i class="fas fa-sign-out-alt"></i> Выйти
+                </button>
+            </div>
+        </div>
+    </div>
+
+    <div class="container">
+        <div class="welcome-section">
+            <h1 class="welcome-title" id="welcomeTitle">Добро пожаловать!</h1>
+            <p class="welcome-message" id="welcomeMessage">Мы рады видеть вас в нашем обучающем пространстве.</p>
+        </div>
+
+        <div class="dashboard">
+            <!-- Панель администратора -->
+            <div class="card admin-card" id="adminPanel">
+                <div class="card-header">
+                    <i class="fas fa-crown card-icon"></i>
+                    <h2 class="card-title">Панель администратора</h2>
+                </div>
+
+                <div class="admin-stats">
+                    <div class="stat-box">
+                        <div class="stat-number" id="totalUsers">0</div>
+                        <div class="stat-label">Всего пользователей</div>
+                    </div>
+                    <div class="stat-box">
+                        <div class="stat-number" id="totalReviews">0</div>
+                        <div class="stat-label">Всего отзывов</div>
+                    </div>
+                    <div class="stat-box">
+                        <div class="stat-number" id="avgRating">0.0</div>
+                        <div class="stat-label">Средний рейтинг</div>
+                    </div>
+                    <div class="stat-box">
+                        <div class="stat-number" id="newToday">0</div>
+                        <div class="stat-label">Новых сегодня</div>
+                    </div>
+                </div>
+
+                <div style="margin: 20px 0;">
+                    <a href="admin.html" style="text-decoration: none;">
+                        <button style="background: linear-gradient(to right, #6a11cb, #2575fc); color: white; border: none; padding: 12px 25px; border-radius: 15px; font-size: 1.1rem; font-weight: bold; cursor: pointer; width: 100%;">
+                            <i class="fas fa-cogs"></i> Перейти в админ-панель
+                        </button>
+                    </a>
+                </div>
+
+                <h3 style="margin-bottom: 15px; color: #4a148c;">Последние отзывы</h3>
+                <div class="reviews-list" id="adminReviewsList">
+                    <!-- Отзывы будут загружены через JavaScript -->
+                </div>
+            </div>
+
+            <!-- Панель родителя -->
+            <div class="card parent-card" id="parentPanel">
+                <div class="card-header">
+                    <i class="fas fa-user-friends card-icon"></i>
+                    <h2 class="card-title">Управление детьми</h2>
+                </div>
+
+                <div class="children-list" id="childrenList">
+                    <!-- Список детей будет загружен через JavaScript -->
+                </div>
+
+                <button class="add-child-btn" onclick="openAddChildModal()">
+                    <i class="fas fa-plus"></i> Добавить ребёнка
+                </button>
+
+                <div class="site-rating">
+                    <div class="average-rating" id="averageRating">0.0</div>
+                    <div class="rating-description" id="ratingDescription">На основе оценок пользователей</div>
+
+                    <div class="rating-distribution">
+                        <!-- Распределение рейтингов будет загружено через JavaScript -->
+                    </div>
+                </div>
+
+                <div class="all-reviews-section">
+                    <h3 class="section-title">Оставить отзыв</h3>
+                    <div class="review-form" id="parentReviewForm">
+                        <div class="rating-stars" id="parentRatingStars">
+                            <i class="fas fa-star star" data-value="1"></i>
+                            <i class="fas fa-star star" data-value="2"></i>
+                            <i class="fas fa-star star" data-value="3"></i>
+                            <i class="fas fa-star star" data-value="4"></i>
+                            <i class="fas fa-star star" data-value="5"></i>
+                        </div>
+                        <textarea id="parentReviewText" placeholder="Расскажите о вашем опыте с платформой..."></textarea>
+                        <button class="submit-review-btn" id="submitParentReviewBtn">
+                            <i class="fas fa-paper-plane"></i> Отправить отзыв
+                        </button>
+                    </div>
+                </div>
+            </div>
+
+            <!-- Панель ученика -->
+            <div class="card child-card" id="childPanel">
+                <div class="card-header">
+                    <i class="fas fa-child card-icon"></i>
+                    <h2 class="card-title">Мой прогресс</h2>
+                </div>
+
+                <div class="child-progress-info">
+                    <div class="progress-number" id="childProgressPercent">0%</div>
+                    <div class="progress-label" id="childProgressText">0 из 7 тем изучено</div>
+                </div>
+
+                <div class="progress-bar-container">
+                    <div class="progress-bar" id="childProgressBar" style="width: 0%"></div>
+                </div>
+
+                <div style="margin: 20px 0; text-align: center;">
+                    <a href="proektsayt.html" style="text-decoration: none;">
+                        <button style="background: linear-gradient(to right, #ff9800, #ffb74d); color: white; border: none; padding: 12px 25px; border-radius: 15px; font-size: 1.1rem; font-weight: bold; cursor: pointer;">
+                            <i class="fas fa-rocket"></i> Продолжить обучение
+                        </button>
+                    </a>
+                </div>
+
+                <div class="all-reviews-section">
+                    <h3 class="section-title">Оставить отзыв</h3>
+                    <div class="review-form" id="childReviewForm">
+                        <div class="rating-stars" id="childRatingStars">
+                            <i class="fas fa-star star" data-value="1"></i>
+                            <i class="fas fa-star star" data-value="2"></i>
+                            <i class="fas fa-star star" data-value="3"></i>
+                            <i class="fas fa-star star" data-value="4"></i>
+                            <i class="fas fa-star star" data-value="5"></i>
+                        </div>
+                        <textarea id="childReviewText" placeholder="Что тебе понравилось в обучении?"></textarea>
+                        <button class="submit-review-btn" id="submitChildReviewBtn">
+                            <i class="fas fa-paper-plane"></i> Отправить отзыв
+                        </button>
+                    </div>
+                </div>
+            </div>
+
+            <!-- Общая панель с отзывами (для всех ролей) -->
+            <div class="card">
+                <div class="card-header">
+                    <i class="fas fa-comments card-icon"></i>
+                    <h2 class="card-title">Отзывы других пользователей</h2>
+                </div>
+                <div class="reviews-list" id="allReviewsList" style="max-height: 400px;">
+                    <!-- Все отзывы будут загружены через JavaScript -->
+                </div>
+            </div>
+
+            <!-- Панель прогресса -->
+            <div class="card">
+                <div class="card-header">
+                    <i class="fas fa-chart-line card-icon"></i>
+                    <h2 class="card-title">Мой прогресс</h2>
+                </div>
+                <div style="color: #5d4037;">
+                    <div style="display: flex; justify-content: space-between; margin-bottom: 10px;">
+                        <span>Пройдено тем:</span>
+                        <span id="themesCompleted">0 из 7</span>
+                    </div>
+                    <div style="height: 20px; background-color: #e0e0e0; border-radius: 10px; overflow: hidden;">
+                        <div id="progressBar" style="height: 100%; width: 0%; background: linear-gradient(to right, #6a11cb, #2575fc); border-radius: 10px;"></div>
+                    </div>
+                    <div style="margin-top: 15px; font-size: 0.9rem; color: #666;">
+                        <p>Прогресс синхронизирован с главной страницей обучения</p>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+
+    <!-- Модальное окно добавления ребенка -->
+    <div class="modal-overlay" id="addChildModal">
+        <div class="modal">
+            <div class="modal-header">
+                <h3 class="modal-title">Добавить ребёнка</h3>
+                <button class="close-modal" onclick="closeAddChildModal()">&times;</button>
+            </div>
+            <form id="addChildForm" onsubmit="addChild(event)">
+                <div class="form-group">
+                    <label class="form-label">Имя ребёнка</label>
+                    <input type="text" class="form-input" id="childName" required>
+                </div>
+                <div class="form-group">
+                    <label class="form-label">Возраст (3-7 лет)</label>
+                    <input type="number" class="form-input" id="childAge" min="3" max="7" required>
+                </div>
+                <button type="submit" class="modal-submit-btn">Добавить</button>
+            </form>
+        </div>
+    </div>
+
+    <div class="footer">
+        <p>© 2023 Программирование для дошкольников. Все права защищены.</p>
+        <p style="margin-top: 10px;">Сайт создан с ❤️ для маленьких программистов</p>
+    </div>
+
+    <script>
+        // Константы для localStorage
+        const USERS_KEY = 'preschool_programming_users';
+        const REVIEWS_KEY = 'preschool_programming_reviews';
+        const CURRENT_USER_KEY = 'currentUser';
+        const PROGRESS_KEY = 'preschool_programming_progress';
+        const CHILDREN_KEY = 'preschool_programming_children';
+
+        // Инициализация данных
+        function initData() {
+            // Инициализация отзывов, если их нет
+            if (!localStorage.getItem(REVIEWS_KEY)) {
+                const sampleReviews = [
+                    {
+                        id: '1',
+                        author: 'Мария Иванова',
+                        authorId: '1',
+                        role: 'parent',
+                        rating: 5,
+                        text: 'Отличная платформа для первого знакомства с программированием! Ребёнок в восторге.',
+                        date: '2023-10-15',
+                        likes: 12,
+                        status: 'approved',
+                        adminComments: []
+                    },
+                    {
+                        id: '2',
+                        author: 'Анна Петрова',
+                        authorId: '2',
+                        role: 'parent',
+                        rating: 4,
+                        text: 'Хорошие уроки, но хотелось бы больше игровых элементов для самых маленьких.',
+                        date: '2023-10-14',
+                        likes: 8,
+                        status: 'approved',
+                        adminComments: []
+                    },
+                    {
+                        id: '3',
+                        author: 'Сергей Смирнов',
+                        authorId: '3',
+                        role: 'parent',
+                        rating: 5,
+                        text: 'Ребёнок (6 лет) сам просит позаниматься! Очень нравится гномик-помощник.',
+                        date: '2023-10-13',
+                        likes: 15,
+                        status: 'approved',
+                        adminComments: []
+                    },
+                    {
+                        id: '4',
+                        author: 'Катя Васильева',
+                        authorId: '4',
+                        role: 'child',
+                        rating: 5,
+                        text: 'Мне нравится играть с котиком-программистом! Он весёлый и всё понятно объясняет.',
+                        date: '2023-10-12',
+                        likes: 20,
+                        status: 'approved',
+                        adminComments: []
+                    }
+                ];
+                localStorage.setItem(REVIEWS_KEY, JSON.stringify(sampleReviews));
+            }
+
+            // Инициализация детей, если нет
+            if (!localStorage.getItem(CHILDREN_KEY)) {
+                localStorage.setItem(CHILDREN_KEY, JSON.stringify({}));
+            }
+        }
+
+        // Получить текущего пользователя
+        function getCurrentUser() {
+            const user = sessionStorage.getItem(CURRENT_USER_KEY);
+            return user ? JSON.parse(user) : null;
+        }
+
+        // Получить всех пользователей
+        function getUsers() {
+            const users = localStorage.getItem(USERS_KEY);
+            return users ? JSON.parse(users) : [];
+        }
+
+        // Получить все отзывы
+        function getReviews() {
+            const reviews = localStorage.getItem(REVIEWS_KEY);
+            return reviews ? JSON.parse(reviews) : [];
+        }
+
+        // Сохранить отзыв
+        function saveReview(review) {
+            const reviews = getReviews();
+            review.id = Date.now().toString();
+            review.date = new Date().toLocaleDateString('ru-RU') + ' ' +
+                          new Date().toLocaleTimeString('ru-RU', {hour: '2-digit', minute:'2-digit'});
+            review.likes = 0;
+            review.status = 'pending'; // По умолчанию на модерации
+            review.adminComments = [];
+            reviews.push(review);
+            localStorage.setItem(REVIEWS_KEY, JSON.stringify(reviews));
+            return review;
+        }
+
+        // Получить статистику сайта
+        function getSiteStats() {
+            const users = getUsers();
+            const reviews = getReviews();
+
+            // Считаем средний рейтинг
+            const approvedReviews = reviews.filter(r => r.status === 'approved');
+            const totalRating = approvedReviews.reduce((sum, review) => sum + review.rating, 0);
+            const avgRating = approvedReviews.length > 0 ? (totalRating / approvedReviews.length).toFixed(1) : '0.0';
+
+            // Считаем новых пользователей за сегодня
+            const today = new Date().toLocaleDateString('ru-RU');
+            const newToday = users.filter(user => {
+                const userDate = new Date(user.createdAt).toLocaleDateString('ru-RU');
+                return userDate === today;
+            }).length;
+
+            // Распределение рейтингов
+            const ratingDistribution = {5: 0, 4: 0, 3: 0, 2: 0, 1: 0};
+            approvedReviews.forEach(review => {
+                ratingDistribution[review.rating]++;
+            });
+
+            return {
+                totalUsers: users.length,
+                totalReviews: reviews.length,
+                avgRating: avgRating,
+                newToday: newToday,
+                ratingDistribution: ratingDistribution
+            };
+        }
+
+        // Получить прогресс пользователя
+        function getUserProgress(userId) {
+            const allProgress = JSON.parse(localStorage.getItem(PROGRESS_KEY) || '{}');
+            return allProgress[userId] || {};
+        }
+
+        // Получить детей родителя
+        function getChildren(parentId) {
+            const allChildren = JSON.parse(localStorage.getItem(CHILDREN_KEY) || '{}');
+            return allChildren[parentId] || [];
+        }
+
+        // Сохранить детей родителя
+        function saveChildren(parentId, children) {
+            const allChildren = JSON.parse(localStorage.getItem(CHILDREN_KEY) || '{}');
+            allChildren[parentId] = children;
+            localStorage.setItem(CHILDREN_KEY, JSON.stringify(allChildren));
+        }
+
+        // Выход из системы
+        function logout() {
+            sessionStorage.removeItem(CURRENT_USER_KEY);
+            window.location.href = 'login.html';
+        }
+
+        // Основная функция инициализации страницы
+        function initPage() {
+            initData();
+
+            const currentUser = getCurrentUser();
+
+            if (!currentUser) {
+                alert('Вы не авторизованы!');
+                window.location.href = 'login.html';
+                return;
+            }
+
+            // Обновляем информацию о пользователе
+            updateUserInfo(currentUser);
+
+            // Загружаем данные в зависимости от роли
+            loadRoleSpecificData(currentUser.role);
+
+            // Загружаем статистику сайта
+            loadSiteStats();
+
+            // Загружаем последние отзывы для администратора
+            if (currentUser.role === 'admin') {
+                loadLatestReviews();
+            }
+
+            // Загружаем детей для родителя
+            if (currentUser.role === 'parent') {
+                loadChildren(currentUser.id);
+                initParentReview();
+            }
+
+            // Загружаем прогресс для ребенка
+            if (currentUser.role === 'child') {
+                loadChildProgress(currentUser.id);
+                initChildReview();
+            }
+
+            // Загружаем все отзывы
+            loadAllReviews();
+
+            // Настраиваем прогресс
+            updateProgress(currentUser);
+
+            // Настраиваем кнопку выхода
+            document.getElementById('logoutBtn').addEventListener('click', logout);
+        }
+
+        // Обновление информации о пользователе
+        function updateUserInfo(user) {
+            document.getElementById('userName').textContent = user.fullName;
+            document.getElementById('userAvatar').textContent = user.fullName.charAt(0).toUpperCase();
+
+            let roleText = '';
+            let welcomeMessage = '';
+
+            switch(user.role) {
+                case 'admin':
+                    roleText = '👑 Администратор';
+                    welcomeMessage = `Добро пожаловать в панель управления, ${user.fullName}! Здесь вы можете управлять сайтом и просматривать статистику.`;
+                    break;
+                case 'parent':
+                    roleText = '👨‍👩‍👧 Родитель';
+                    const childCount = getChildren(user.id).length;
+                    const childrenText = childCount > 0 ? ` (у вас ${childCount} ${childCount === 1 ? 'ребёнок' : childCount < 5 ? 'ребёнка' : 'детей'})` : '';
+                    welcomeMessage = `Рады видеть вас снова, ${user.fullName}!${childrenText} Следите за успехами ваших детей в обучении.`;
+                    break;
+                case 'child':
+                    roleText = '👦 Дошкольник';
+                    welcomeMessage = `Привет, ${user.fullName}! Готов к новым приключениям с Гномиком-программистом?`;
+                    break;
+            }
+
+            document.getElementById('userRole').textContent = roleText;
+            document.getElementById('welcomeTitle').textContent = `Добро пожаловать, ${user.fullName}!`;
+            document.getElementById('welcomeMessage').textContent = welcomeMessage;
+        }
+
+        // Загрузка данных в зависимости от роли
+        function loadRoleSpecificData(role) {
+            // Скрываем все панели
+            document.getElementById('adminPanel').classList.add('hidden');
+            document.getElementById('parentPanel').classList.add('hidden');
+            document.getElementById('childPanel').classList.add('hidden');
+
+            // Показываем нужные панели
+            switch(role) {
+                case 'admin':
+                    document.getElementById('adminPanel').classList.remove('hidden');
+                    break;
+                case 'parent':
+                    document.getElementById('parentPanel').classList.remove('hidden');
+                    break;
+                case 'child':
+                    document.getElementById('childPanel').classList.remove('hidden');
+                    break;
+            }
+        }
+
+        // Инициализация отзыва для родителя
+        function initParentReview() {
+            const stars = document.querySelectorAll('#parentRatingStars .star');
+            let selectedRating = 0;
+
+            stars.forEach(star => {
+                star.addEventListener('mouseover', function() {
+                    const value = parseInt(this.getAttribute('data-value'));
+                    highlightStars('parent', value);
+                });
+
+                star.addEventListener('mouseout', function() {
+                    highlightStars('parent', selectedRating);
+                });
+
+                star.addEventListener('click', function() {
+                    selectedRating = parseInt(this.getAttribute('data-value'));
+                    highlightStars('parent', selectedRating);
+                });
+            });
+
+            function highlightStars(type, rating) {
+                const stars = document.querySelectorAll(`#${type}RatingStars .star`);
+                stars.forEach(star => {
+                    const value = parseInt(star.getAttribute('data-value'));
+                    star.classList.toggle('active', value <= rating);
+                });
+            }
+
+            // Настройка кнопки отправки отзыва
+            document.getElementById('submitParentReviewBtn').addEventListener('click', function() {
+                const reviewText = document.getElementById('parentReviewText').value.trim();
+                const currentUser = getCurrentUser();
+
+                if (selectedRating === 0) {
+                    alert('Пожалуйста, поставьте оценку!');
+                    return;
+                }
+
+                if (reviewText.length < 10) {
+                    alert('Пожалуйста, напишите отзыв (минимум 10 символов)');
+                    return;
+                }
+
+                const review = {
+                    author: currentUser.fullName,
+                    authorId: currentUser.id,
+                    role: currentUser.role,
+                    rating: selectedRating,
+                    text: reviewText
+                };
+
+                const savedReview = saveReview(review);
+
+                alert('Спасибо за ваш отзыв! Он отправлен на модерацию и будет опубликован после проверки.');
+
+                // Очищаем форму
+                document.getElementById('parentReviewText').value = '';
+                selectedRating = 0;
+                highlightStars('parent', 0);
+
+                // Обновляем статистику и отзывы
+                loadSiteStats();
+                loadAllReviews();
+                if (currentUser.role === 'admin') {
+                    loadLatestReviews();
+                }
+            });
+        }
+
+        // Инициализация отзыва для ребенка
+        function initChildReview() {
+            const stars = document.querySelectorAll('#childRatingStars .star');
+            let selectedRating = 0;
+
+            stars.forEach(star => {
+                star.addEventListener('mouseover', function() {
+                    const value = parseInt(this.getAttribute('data-value'));
+                    highlightStars('child', value);
+                });
+
+                star.addEventListener('mouseout', function() {
+                    highlightStars('child', selectedRating);
+                });
+
+                star.addEventListener('click', function() {
+                    selectedRating = parseInt(this.getAttribute('data-value'));
+                    highlightStars('child', selectedRating);
+                });
+            });
+
+            function highlightStars(type, rating) {
+                const stars = document.querySelectorAll(`#${type}RatingStars .star`);
+                stars.forEach(star => {
+                    const value = parseInt(star.getAttribute('data-value'));
+                    star.classList.toggle('active', value <= rating);
+                });
+            }
+
+            // Настройка кнопки отправки отзыва
+            document.getElementById('submitChildReviewBtn').addEventListener('click', function() {
+                const reviewText = document.getElementById('childReviewText').value.trim();
+                const currentUser = getCurrentUser();
+
+                if (selectedRating === 0) {
+                    alert('Пожалуйста, поставь оценку!');
+                    return;
+                }
+
+                if (reviewText.length < 10) {
+                    alert('Пожалуйста, напиши отзыв (минимум 10 символов)');
+                    return;
+                }
+
+                const review = {
+                    author: currentUser.fullName,
+                    authorId: currentUser.id,
+                    role: currentUser.role,
+                    rating: selectedRating,
+                    text: reviewText
+                };
+
+                const savedReview = saveReview(review);
+
+                alert('Спасибо за твой отзыв! Он отправлен на проверку и скоро появится на сайте.');
+
+                // Очищаем форму
+                document.getElementById('childReviewText').value = '';
+                selectedRating = 0;
+                highlightStars('child', 0);
+
+                // Обновляем статистику и отзывы
+                loadSiteStats();
+                loadAllReviews();
+                if (currentUser.role === 'admin') {
+                    loadLatestReviews();
+                }
+            });
+        }
+
+        // Загрузка статистики сайта
+        function loadSiteStats() {
+            const stats = getSiteStats();
+
+            // Обновляем статистику для администратора
+            document.getElementById('totalUsers').textContent = stats.totalUsers;
+            document.getElementById('totalReviews').textContent = stats.totalReviews;
+            document.getElementById('avgRating').textContent = stats.avgRating;
+            document.getElementById('newToday').textContent = stats.newToday;
+
+            // Обновляем рейтинг для родителя
+            document.getElementById('averageRating').textContent = stats.avgRating;
+
+            // Обновляем описание рейтинга
+            const ratingDesc = document.getElementById('ratingDescription');
+            const avgRating = parseFloat(stats.avgRating);
+
+            if (avgRating >= 4.5) {
+                ratingDesc.textContent = 'Отличный рейтинг! Пользователи в восторге.';
+            } else if (avgRating >= 3.5) {
+                ratingDesc.textContent = 'Хороший рейтинг. Большинство довольны.';
+            } else if (avgRating >= 2.5) {
+                ratingDesc.textContent = 'Средний рейтинг. Есть над чем поработать.';
+            } else {
+                ratingDesc.textContent = 'Низкий рейтинг. Нужны улучшения.';
+            }
+
+            // Обновляем распределение рейтингов
+            const distributionContainer = document.querySelector('.rating-distribution');
+            if (distributionContainer) {
+                distributionContainer.innerHTML = '';
+
+                for (let i = 5; i >= 1; i--) {
+                    const count = stats.ratingDistribution[i];
+                    const percent = stats.totalReviews > 0 ? Math.round((count / stats.totalReviews) * 100) : 0;
+
+                    const item = document.createElement('div');
+                    item.className = 'distribution-item';
+                    item.innerHTML = `
+                        <div class="distribution-star">${'★'.repeat(i)}${'☆'.repeat(5-i)}</div>
+                        <div class="distribution-bar">
+                            <div class="distribution-fill" style="width: ${percent}%"></div>
+                        </div>
+                        <div class="distribution-percent">${percent}%</div>
+                    `;
+                    distributionContainer.appendChild(item);
+                }
+            }
+        }
+
+        // Загрузка последних отзывов для администратора
+        function loadLatestReviews() {
+            const reviews = getReviews();
+            const reviewsList = document.getElementById('adminReviewsList');
+            reviewsList.innerHTML = '';
+
+            // Сортируем отзывы по дате (новые первые)
+            const sortedReviews = [...reviews].sort((a, b) => new Date(b.date) - new Date(a.date));
+
+            // Показываем только последние 5 отзывов
+            const latestReviews = sortedReviews.slice(0, 5);
+
+            if (latestReviews.length === 0) {
+                reviewsList.innerHTML = '<p style="color: #757575; text-align: center;">Отзывов пока нет</p>';
+                return;
+            }
+
+            latestReviews.forEach(review => {
+                const reviewItem = document.createElement('div');
+                reviewItem.className = 'review-item';
+
+                // Определяем иконку для роли
+                let roleIcon = '👤';
+                if (review.role === 'admin') roleIcon = '👑';
+                if (review.role === 'parent') roleIcon = '👨‍👩‍👧';
+                if (review.role === 'child') roleIcon = '👦';
+
+                // Определяем статус
+                let statusBadge = '';
+                if (review.status === 'pending') statusBadge = '<span style="background: #FF9800; color: white; padding: 2px 8px; border-radius: 10px; font-size: 0.8rem;">На модерации</span>';
+                if (review.status === 'approved') statusBadge = '<span style="background: #4CAF50; color: white; padding: 2px 8px; border-radius: 10px; font-size: 0.8rem;">Одобрен</span>';
+                if (review.status === 'rejected') statusBadge = '<span style="background: #f44336; color: white; padding: 2px 8px; border-radius: 10px; font-size: 0.8rem;">Отклонён</span>';
+
+                reviewItem.innerHTML = `
+                    <div class="review-header">
+                        <div class="review-author">${roleIcon} ${review.author}</div>
+                        <div style="display: flex; gap: 10px; align-items: center;">
+                            ${statusBadge}
+                            <div class="review-date">${review.date}</div>
+                        </div>
+                    </div>
+                    <div class="review-rating">${'★'.repeat(review.rating)}${'☆'.repeat(5-review.rating)}</div>
+                    <div class="review-text">${review.text}</div>
+                    ${review.adminComments && review.adminComments.length > 0 ? `
+                        <div class="comment-section">
+                            <div style="font-weight: bold; color: #4a148c; margin-bottom: 5px;">Комментарии администратора:</div>
+                            ${review.adminComments.map(comment => `
+                                <div class="comment-item">
+                                    <div class="comment-header">
+                                        <span class="comment-author">👑 ${comment.author}</span>
+                                        <span class="comment-date">${comment.date}</span>
+                                    </div>
+                                    <div>${comment.text}</div>
+                                </div>
+                            `).join('')}
+                        </div>
+                    ` : ''}
+                `;
+                reviewsList.appendChild(reviewItem);
+            });
+        }
+
+        // Загрузка всех отзывов
+        function loadAllReviews() {
+            const reviews = getReviews();
+            const reviewsList = document.getElementById('allReviewsList');
+            const currentUser = getCurrentUser();
+
+            if (!reviewsList) return;
+
+            reviewsList.innerHTML = '';
+
+            // Сортируем отзывы по дате (новые первые), показываем только одобренные
+            const sortedReviews = [...reviews]
+                .filter(review => review.status === 'approved')
+                .sort((a, b) => new Date(b.date) - new Date(a.date));
+
+            if (sortedReviews.length === 0) {
+                reviewsList.innerHTML = '<p style="color: #757575; text-align: center;">Отзывов пока нет</p>';
+                return;
+            }
+
+            // Показываем максимум 10 отзывов
+            const displayReviews = sortedReviews.slice(0, 10);
+
+            displayReviews.forEach(review => {
+                const reviewItem = document.createElement('div');
+                reviewItem.className = 'review-item';
+
+                // Определяем иконку для роли
+                let roleIcon = '👤';
+                if (review.role === 'admin') roleIcon = '👑';
+                if (review.role === 'parent') roleIcon = '👨‍👩‍👧';
+                if (review.role === 'child') roleIcon = '👦';
+
+                reviewItem.innerHTML = `
+                    <div class="review-header">
+                        <div class="review-author">${roleIcon} ${review.author}</div>
+                        <div class="review-date">${review.date}</div>
+                    </div>
+                    <div class="review-rating">${'★'.repeat(review.rating)}${'☆'.repeat(5-review.rating)}</div>
+                    <div class="review-text">${review.text}</div>
+                    ${review.adminComments && review.adminComments.length > 0 ? `
+                        <div class="comment-section">
+                            <div style="font-weight: bold; color: #2575fc; margin-bottom: 5px; font-size: 0.9rem;">Комментарии администратора:</div>
+                            ${review.adminComments.map(comment => `
+                                <div class="comment-item">
+                                    <div class="comment-header">
+                                        <span class="comment-author">👑 ${comment.author}</span>
+                                        <span class="comment-date">${comment.date}</span>
+                                    </div>
+                                    <div>${comment.text}</div>
+                                </div>
+                            `).join('')}
+                        </div>
+                    ` : ''}
+                    ${currentUser && currentUser.role === 'admin' ? `
+                        <div class="comment-form" style="margin-top: 10px;">
+                            <input type="text" class="comment-input" placeholder="Добавить комментарий..." data-review-id="${review.id}">
+                            <button class="comment-btn" onclick="addAdminComment('${review.id}', this)">Отправить</button>
+                        </div>
+                    ` : ''}
+                `;
+                reviewsList.appendChild(reviewItem);
+            });
+        }
+
+        // Добавить комментарий администратора
+        function addAdminComment(reviewId, button) {
+            const input = button.previousElementSibling;
+            const commentText = input.value.trim();
+            const currentUser = getCurrentUser();
+
+            if (!commentText) {
+                alert('Введите текст комментария');
+                return;
+            }
+
+            if (currentUser.role !== 'admin') {
+                alert('Только администраторы могут оставлять комментарии');
+                return;
+            }
+
+            const reviews = getReviews();
+            const reviewIndex = reviews.findIndex(r => r.id === reviewId);
+
+            if (reviewIndex === -1) {
+                alert('Отзыв не найден');
+                return;
+            }
+
+            if (!reviews[reviewIndex].adminComments) {
+                reviews[reviewIndex].adminComments = [];
+            }
+
+            // Добавить комментарий
+            reviews[reviewIndex].adminComments.push({
+                id: Date.now().toString(),
+                author: currentUser.fullName,
+                text: commentText,
+                date: new Date().toLocaleDateString('ru-RU') + ' ' +
+                      new Date().toLocaleTimeString('ru-RU', {hour: '2-digit', minute:'2-digit'})
+            });
+
+            localStorage.setItem(REVIEWS_KEY, JSON.stringify(reviews));
+
+            // Очистить поле ввода
+            input.value = '';
+
+            // Обновить отображение
+            loadAllReviews();
+            if (currentUser.role === 'admin') {
+                loadLatestReviews();
+            }
+
+            alert('Комментарий добавлен');
+        }
+
+        // Загрузка детей для родителя
+        function loadChildren(parentId) {
+            const children = getChildren(parentId);
+            const container = document.getElementById('childrenList');
+
+            if (children.length === 0) {
+                container.innerHTML = '<p style="color: #666; text-align: center;">У вас пока нет добавленных детей</p>';
+                return;
+            }
+
+            let html = '';
+            children.forEach((child, index) => {
+                // Получаем прогресс ребенка
+                const progress = getUserProgress(child.id);
+                const completedThemes = Object.values(progress).filter(v => v === true).length;
+                const totalThemes = 7;
+                const progressPercent = Math.round((completedThemes / totalThemes) * 100);
+
+                html += `
+                    <div class="child-item">
+                        <div>
+                            <div class="child-name">${child.name}</div>
+                            <div class="child-age">${child.age} лет</div>
+                        </div>
+                        <div class="child-progress">${progressPercent}%</div>
+                    </div>
+                `;
+            });
+
+            container.innerHTML = html;
+        }
+
+        // Загрузка прогресса для ребенка
+        function loadChildProgress(childId) {
+            const progress = getUserProgress(childId);
+            const completedThemes = Object.values(progress).filter(v => v === true).length;
+            const totalThemes = 7;
+            const progressPercent = Math.round((completedThemes / totalThemes) * 100);
+
+            document.getElementById('childProgressPercent').textContent = `${progressPercent}%`;
+            document.getElementById('childProgressText').textContent = `${completedThemes} из ${totalThemes} тем изучено`;
+            document.getElementById('childProgressBar').style.width = `${progressPercent}%`;
+        }
+
+        // Открыть модальное окно добавления ребенка
+        function openAddChildModal() {
+            document.getElementById('addChildModal').style.display = 'flex';
+        }
+
+        // Закрыть модальное окно добавления ребенка
+        function closeAddChildModal() {
+            document.getElementById('addChildModal').style.display = 'none';
+            document.getElementById('addChildForm').reset();
+        }
+
+        // Добавить ребенка
+        function addChild(event) {
+            event.preventDefault();
+
+            const currentUser = getCurrentUser();
+            if (currentUser.role !== 'parent') {
+                alert('Только родители могут добавлять детей');
+                return;
+            }
+
+            const childName = document.getElementById('childName').value.trim();
+            const childAge = parseInt(document.getElementById('childAge').value);
+
+            if (!childName || childAge < 3 || childAge > 7) {
+                alert('Пожалуйста, введите корректные данные');
+                return;
+            }
+
+            const children = getChildren(currentUser.id);
+
+            // Проверяем, нет ли ребенка с таким же именем
+            if (children.some(child => child.name.toLowerCase() === childName.toLowerCase())) {
+                alert('Ребенок с таким именем уже добавлен');
+                return;
+            }
+
+            // Создаем ID для ребенка
+            const childId = `child_${Date.now()}_${Math.random().toString(36).substr(2, 9)}`;
+
+            children.push({
+                id: childId,
+                name: childName,
+                age: childAge,
+                parentId: currentUser.id,
+                createdAt: new Date().toISOString()
+            });
+
+            saveChildren(currentUser.id, children);
+            closeAddChildModal();
+            loadChildren(currentUser.id);
+            updateUserInfo(currentUser);
+
+            alert(`Ребенок ${childName} успешно добавлен!`);
+        }
+
+        // Обновление прогресса пользователя
+        function updateProgress(user) {
+            const progress = getUserProgress(user.id);
+            const completed = Object.values(progress).filter(v => v === true).length;
+            const percent = Math.round((completed / 7) * 100);
+
+            document.getElementById('themesCompleted').textContent = `${completed} из 7`;
+            document.getElementById('progressBar').style.width = `${percent}%`;
+
+            // Для ребенка также обновляем его собственную панель прогресса
+            if (user.role === 'child') {
+                document.getElementById('childProgressPercent').textContent = `${percent}%`;
+                document.getElementById('childProgressText').textContent = `${completed} из 7 тем изучено`;
+                document.getElementById('childProgressBar').style.width = `${percent}%`;
+            }
+        }
+
+        // Запускаем инициализацию при загрузке страницы
+        document.addEventListener('DOMContentLoaded', initPage);
+
+        // Закрытие модальных окон при клике вне их
+        document.querySelectorAll('.modal-overlay').forEach(modal => {
+            modal.addEventListener('click', function(e) {
+                if (e.target === this) {
+                    this.style.display = 'none';
+                }
+            });
+        });
+    </script>
+</body>
+</html>
+[file content end]
